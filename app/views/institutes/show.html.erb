@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Código:</strong>
+  <%= @institute.code %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @institute.name %>
+</p>
+
+<p>
+    <%= link_to 'Back', institutes_path, class: 'btn blue lighten-3 left' %>
+    <%= link_to 'Edición', edit_institute_path(@institute), class: 'right btn blue' %>
+</p>
+<div class="clearfix"></div>

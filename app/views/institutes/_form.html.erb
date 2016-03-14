@@ -1,0 +1,27 @@
+<%= form_for(@institute) do |f| %>
+  <% if @institute.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@institute.errors.count, "error") %> prohibited this institute from being saved:</h2>
+
+      <ul>
+      <% @institute.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field">
+    <%= f.label :code, 'Código' %><br>
+    <%= f.number_field :code, required: true %>
+  </div>
+  <div class="input-field">
+    <%= f.label :name, 'Nombre' %><br>
+    <%= f.text_field :name, required: true %>
+  </div>
+  <div class="actions">
+    <%= link_to 'Back', institutes_path, class: 'btn blue lighten-3 left' %>
+    <%= f.submit('Agregar', class: 'right btn blue') %>
+  </div>
+  <div class="clearfix"></div>
+<% end %>

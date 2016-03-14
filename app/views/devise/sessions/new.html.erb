@@ -1,0 +1,49 @@
+
+<div id="login-page" class="row">
+    <div class="col s12 l4 offset-l4 m6 offset-m3 z-depth-4 card-panel">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:'login-form') do |f| %>
+        <div class="row">
+          <div class="input-field col s12 center">
+            <%= image_tag 'logo.png', id: 'logo-ijo', class:'responsive-img valign profile-image-login col s12'%>
+            <p class="center login-form-text">Bienvenidos</p>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <%= f.text_field :username, autofocus: true %>
+            <%= f.label :username, class:'center-align'%>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <%= f.password_field :password, autocomplete: "off" %>
+            <%= f.label :password %><br />
+          </div>
+        </div>
+        <div class="row">          
+          <div class="input-field col s12 m12 l12  login-text">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 offset-s3">
+            <%= f.submit "Iniciar Sesión", class:'btn waves-effect waves-light col s12' %> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <%= render "devise/shared/links" %>
+            <!-- <p class="margin medium-small"><a href="page-register.html">Register Now!</a></p> -->
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <!-- <p class="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p> -->
+          </div>          
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+

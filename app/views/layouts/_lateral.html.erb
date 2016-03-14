@@ -1,0 +1,100 @@
+
+<ul class="collapsible panel-lateral" data-collapsible="expandable">
+  <li class="<%= active_class('institutes') %>">
+    <a class="collapsible-header waves-effect waves-blue"><%=fa_icon "university"%><%=fa_icon "angle-down", class:'right blue lighten-2
+' %>Intituciones</a>
+    <div class="collapsible-body" style="<%= open_collapse('institutes') %>">
+      <ul class="collection">
+        <li class="collection-item <%= active_link('blue lighten-2 active', new_institute_path) %>">
+          <%= link_to 'Nueva Institución', new_institute_path %>
+        </li>
+        <li class="collection-item <%= active_link('blue lighten-2 active', institutes_path) %>">
+          <%= link_to 'Listado de Instituciones', institutes_path %>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="<%= active_class('areas') %>">
+    <a class="collapsible-header waves-effect waves-red"><%=fa_icon "key"%><%=fa_icon "angle-down", class:'right red lighten-1' %>Áreas</a>
+    <div class="collapsible-body" style="<%= open_collapse('areas') %>">
+      <ul class="collection">
+        <li class="collection-item <%= active_link('red lighten-1 active', new_area_path) %>">
+          <%= link_to 'Nueva Área', new_area_path %>
+        </li>
+        <li class="collection-item <%= active_link('red lighten-1 active', areas_path) %>">
+          <%= link_to 'Listado de Areas', areas_path %>
+        </li>
+      </ul>
+    </div>
+  </li>
+
+  <li class="<%= active_class('resources') %>">
+    <a class="collapsible-header waves-effect waves-green"><%=fa_icon "keyboard-o"%><%=fa_icon "angle-down", class:'right green lighten-1' %>Recursos</a>
+    <div class="collapsible-body" style="<%= open_collapse('resources') %>">
+      <ul class="collection">
+        <li class="collection-item <%= active_link('green lighten-1 active', new_resource_path) %>">
+          <%= link_to 'Nuevo Recurso', new_resource_path %>
+        </li>
+        <li class="collection-item <%= active_link('green lighten-1 active', resources_path) %>">
+          <%= link_to 'Listado de Recursos', resources_path %>
+        </li>
+      </ul>
+    </div>
+  </li>
+
+  <li class="<%= active_class('activities') %>">
+    <a class="collapsible-header waves-effect waves-yellow"><%=fa_icon "check-square-o"%><%=fa_icon "angle-down", class:'right amber lighten-1' %>Actividades</a>
+    <div class="collapsible-body" style="<%= open_collapse('activities') %>">
+      <ul class="collection">
+        <li class="collection-item <%= active_link('amber lighten-1 active', new_activity_path) %>">
+          <%= link_to 'Nueva Actividad', new_activity_path %>
+        </li>
+        <li class="collection-item <%= active_link('amber lighten-1 active', activities_path) %>">
+          <%= link_to 'Listado de Actividades', activities_path %>
+        </li>
+      </ul>
+    </div>
+  </li>
+  
+  <li class="<%= active_class('events') %>">
+    <a class="collapsible-header waves-effect waves-purple"><%=fa_icon "bicycle"%><%=fa_icon "angle-down", class:'right purple lighten-2' %>Eventos</a>
+    <div class="collapsible-body" style="<%= open_collapse('events') %>">
+      <ul class="collection">
+        <li class="collection-item <%= active_link('purple lighten-2 active', new_event_path) %>">
+          <%= link_to 'Nuevo Evento', new_event_path %>
+        </li>
+        <li class="collection-item <%= active_link('purple lighten-2 active', events_path) %>">
+          <%= link_to 'Listado de Eventos', events_path %>
+        </li>
+      </ul>
+    </div>
+  </li>
+
+  <li class="<%= active_class('beneficiaries') %>">
+    <a class="collapsible-header waves-effect waves-orange"><%=fa_icon "users"%><%=fa_icon "angle-down", class:'right orange lighten-1' %>Beneficiarios</a>
+    <div class="collapsible-body" style="<%= open_collapse('beneficiaries') %>">
+      <ul class="collection">
+        <li class="collection-item <%= active_link('orange lighten-1 active', new_beneficiary_path) %>">
+          <%= link_to 'Nuevo Beneficiario', new_beneficiary_path %>
+        </li>
+        <li class="collection-item <%= active_link('orange lighten-1 active', beneficiaries_path) %>">
+          <%= link_to 'Listado de Beneficiarios', beneficiaries_path %>
+        </li>
+      </ul>
+    </div>
+  </li>
+
+  <li class="<%= active_class('text') %>">
+    <a class="collapsible-header waves-effect waves-teal"><%=fa_icon "file-text-o"%><%=fa_icon "angle-down", class:'right teal lighten-2' %>Reportes</a>
+    <div class="collapsible-body" style="<%= open_collapse('text') %>">
+      <ul class="collection">
+        <li class="collection-item <%= active_link('teal lighten-2 active', new_area_path) %>">
+          <%= link_to 'Generar Reporte', new_area_path %>
+        </li>
+        <li class="collection-item <%= active_link('teal lighten-2 active', areas_path) %>">
+          <%= link_to 'Consultar Reporte', areas_path %>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>

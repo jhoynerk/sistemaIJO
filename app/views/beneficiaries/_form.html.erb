@@ -1,0 +1,39 @@
+<%= form_for(@beneficiary) do |f| %>
+  <% if @beneficiary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@beneficiary.errors.count, "error") %> prohibited this beneficiary from being saved:</h2>
+
+      <ul>
+      <% @beneficiary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name, 'Nombre' %><br>
+    <%= f.text_field :first_name, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name, 'Apellido' %><br>
+    <%= f.text_field :last_name, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :email, 'Correo' %><br>
+    <%= f.email_field :email, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :position, 'Puesto' %><br>
+    <%= f.text_field :position, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :phone, 'Teléfono' %><br>
+    <%= f.text_field :phone, required: true %>
+  </div>
+  <div class="input-field">
+    <%= link_to 'Back', beneficiaries_path, class: 'btn blue lighten-3 left' %>
+    <%= f.submit('Agregar', class: 'right btn blue') %>
+  </div>
+  <div class="clearfix"></div>
+<% end %>

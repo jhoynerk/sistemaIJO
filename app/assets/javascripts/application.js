@@ -14,3 +14,26 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require materialize-sprockets
+
+var setupDashboardPage = function() {
+  $(".button-collapse").sideNav({
+    menuWidth: 300, // Default is 240
+    edge: 'left', // Choose the horizontal origin
+    closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+  });
+
+  $('.collapsible').collapsible({
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+  });
+
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+
+  $('select').material_select();
+  $("select[required]").css({display: "inline", height: 0, padding: 0, width: 0});
+};
+
+$(document).on('page:load ready', setupDashboardPage);

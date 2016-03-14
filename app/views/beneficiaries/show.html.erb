@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @beneficiary.first_name %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @beneficiary.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @beneficiary.email %>
+</p>
+
+<p>
+  <strong>Puesto:</strong>
+  <%= @beneficiary.position %>
+</p>
+
+<p>
+  <strong>Teléfono:</strong>
+  <%= @beneficiary.phone %>
+</p>
+
+<p>
+    <%= link_to 'Back', beneficiaries_path, class: 'btn blue lighten-3 left' %>
+    <%= link_to 'Edición', edit_beneficiary_path(@beneficiary), class: 'right btn blue' %>
+</p>
+<div class="clearfix"></div>

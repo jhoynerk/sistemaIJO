@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Código:</strong>
+  <%= @area.code %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @area.name %>
+</p>
+
+<p>
+  <strong>Institute:</strong>
+  <%= @area.institute.name %>
+</p>
+
+<p>
+    <%= link_to 'Back', areas_path, class: 'btn blue lighten-3 left' %>
+    <%= link_to 'Edición', edit_area_path(@area), class: 'right btn blue' %>
+</p>
+<div class="clearfix"></div>

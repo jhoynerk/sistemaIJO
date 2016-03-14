@@ -1,0 +1,29 @@
+@import "materialize";
+nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+    height: 100px;
+    line-height: 100px;
+}
+.panel-lateral{
+  li{
+    border: none;
+  }
+  a {
+    color: #757575;
+    border-bottom: none;
+  }
+  i.fa.right {
+    color: whitesmoke;
+  }
+
+  .collection-item.active{
+    a{
+      color: white;
+    }
+  }
+
+  .waves-effect.waves-blue .waves-ripple {
+   /* The alpha value allows the text and background color
+   of the button to still show through. */
+    background-color: #90caf9;
+  }
+}

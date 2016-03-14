@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Código:</strong>
+  <%= @resource.code %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @resource.name %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @resource.description %>
+</p>
+
+<p>
+  <strong>Capacidad:</strong>
+  <%= @resource.capacity %>
+</p>
+
+<p>
+  <strong>Pertenece al Recurso:</strong>
+  <%= link_to @resource.resource.code.to_s+' '+@resource.resource.name.to_s, @resource.resource if @resource.resource.present? %>
+</p>
+
+<p>
+    <%= link_to 'Back', resources_path, class: 'btn blue lighten-3 left' %>
+    <%= link_to 'Edición', edit_resource_path(@resource), class: 'right btn blue' %>
+</p>
+<div class="clearfix"></div>

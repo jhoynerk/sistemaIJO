@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Código:</strong>
+  <%= @event.code %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Observaciones:</strong>
+  <%= @event.observations %>
+</p>
+
+<p>
+  <strong>Fecha de Inicio:</strong>
+  <%= @event.date_start %>
+</p>
+
+<p>
+  <strong>Fecha de Culminación:</strong>
+  <%= @event.date_end %>
+</p>
+
+<p>
+    <%= link_to 'Back', events_path, class: 'btn blue lighten-3 left' %>
+    <%= link_to 'Edición', edit_event_path(@event), class: 'right btn blue' %>
+</p>
+<div class="clearfix"></div>

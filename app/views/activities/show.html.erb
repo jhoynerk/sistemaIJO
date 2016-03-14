@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Código:</strong>
+  <%= @activity.code %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @activity.description %>
+</p>
+
+<p>
+  <strong>Fecha de Inicio:</strong>
+  <%= @activity.date_start %>
+</p>
+
+<p>
+  <strong>Fecha de Culminación:</strong>
+  <%= @activity.date_end %>
+</p>
+
+<p>
+  <strong>Evento:</strong>
+  <%= @activity.event.description if @activity.event.present? %>
+</p>
+<p>
+    <%= link_to 'Back', activities_path, class: 'btn blue lighten-3 left' %>
+    <%= link_to 'Edición', edit_activity_path(@activity), class: 'right btn blue' %>
+</p>
+<div class="clearfix"></div>

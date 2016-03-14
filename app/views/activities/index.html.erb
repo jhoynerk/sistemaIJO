@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h4>Listado de Actividades
+  <%= link_to "<i class='material-icons'>add</i>".html_safe, new_activity_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right' %>
+</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Descripción</th>
+      <th>Fecha de Inicio</th>
+      <th>Fecha de Culminación</th>
+      <th>Evento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.code %></td>
+        <td><%= activity.description %></td>
+        <td><%= activity.date_start %></td>
+        <td><%= activity.date_end %></td>
+        <td><%= activity.event.description if activity.event.present? %></td>
+        <td>
+          <%= link_to "<i class='material-icons'>search</i>".html_safe, activity , class: 'btn btn-floating blue'%>
+        </td>
+        <td>
+          <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_activity_path(activity), class: 'btn btn-floating yellow accent-4' %>
+        </td>
+        <td>
+          <%= link_to "<i class='material-icons'>delete</i>".html_safe, activity, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

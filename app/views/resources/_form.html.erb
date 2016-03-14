@@ -1,0 +1,40 @@
+<%= form_for(@resource) do |f| %>
+  <% if @resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+      <ul>
+      <% @resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code, 'Código' %><br>
+    <%= f.number_field :code, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :name, 'Nombre' %><br>
+    <%= f.text_field :name, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :description, 'Descripción' %><br>
+    <%= f.text_field :description, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :capacity, 'Capacidad' %><br>
+    <%= f.number_field :capacity, required: true %>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.select(:resource_id, Resource.all.collect {|p| [ p.name, p.id ] }, { include_blank: 'Seleccione pertenece a un recurso' }, required: false) %>
+    </div>
+  </div>
+  <div class="input-field">
+    <%= link_to 'Back', resources_path, class: 'btn blue lighten-3 left' %>
+    <%= f.submit('Agregar', class: 'right btn blue') %>
+  </div>
+  <div class="clearfix"></div>
+<% end %>
