@@ -24,7 +24,7 @@ gem 'devise'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'font-awesome-rails'
-
+gem 'cocoon'
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
@@ -39,6 +39,13 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+end
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'rspec'
 end
 
 group :development do

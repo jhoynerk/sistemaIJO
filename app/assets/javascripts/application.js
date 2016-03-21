@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require materialize-sprockets
+//= require cocoon
 
 var setupDashboardPage = function() {
   $(".button-collapse").sideNav({

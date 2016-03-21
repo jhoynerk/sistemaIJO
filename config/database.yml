@@ -3,17 +3,21 @@ default: &default
   pool: 5
   timeout: 5000
   host: localhost
-  username: jhoynerk
-  password: test
+  username: postgres
+  password: 
+  port: 5432
 
 development:
   <<: *default
   database: sistemaIJO_dev
 
-test:
+test: &test
   <<: *default
   database: sistemaIJO_test
 
 production:
   <<: *default
   database: sistemaIJO_test
+
+cucumber:
+  <<: *test

@@ -7,8 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(username: 'prizni', email: 'prizni@gmail.com', password: 'password', password_confirmation: 'password');
+u = User.create(username: 'prizni', email: 'prizni@gmail.com', password: 'password', password_confirmation: 'password');
+p u.username 
 institute = Institute.create(code: '001', name: 'Instituto Técnico Jesús Obrero');
+p institute.name
 area1 = Area.create(code: '001', name: 'Departamento de Informática I', institute: institute);
 area2 = Area.create(code: '002', name: 'Departamento de Informática II', institute: institute);
 area3 = Area.create(code: '003', name: 'Departamento de Física I', institute: institute);
@@ -26,3 +28,5 @@ recurso3 = Resource.create(code: '00004', name: 'Teclado', description: '', capa
 recurso4 = Resource.create(code: '00005', name: 'Monitor', description: '', capacity: 1, resource: recurso1)
 recurso5 = Resource.create(code: '00006', name: 'CPU', description: '', capacity: 1, resource: recurso1)
 recurso6 = Resource.create(code: '00007', name: 'Impresora', description: '', capacity: 1, resource: recurso7)
+
+p 'Fin seed'
