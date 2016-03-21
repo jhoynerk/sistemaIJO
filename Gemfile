@@ -25,6 +25,7 @@ gem 'materialize-sass'
 gem 'material_icons'
 gem 'font-awesome-rails'
 gem 'cocoon'
+gem 'slim'
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
