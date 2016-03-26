@@ -26,4 +26,42 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
    of the button to still show through. */
     background-color: #90caf9;
   }
+
+  .waves-effect.waves-pink .waves-ripple {
+   /* The alpha value allows the text and background color
+   of the button to still show through. */
+    background-color: #f48fb1;
+  }
+}
+
+#toast-container {
+  margin-bottom: 10px!important;
+  z-index: 999999!important;
+  top: 130px!important;
+  right: 40px!important;
+}
+
+
+#toast-container button {
+  position: absolute;
+  right: 20px;
+  top: 14px;
+}
+
+#toast-container .toast-message {
+  padding-right: 30px;
+}
+
+#toast-container>div {
+    width: 500px!important;
+    margin: 0 0 6px!important;
+    padding: 15px 15px 15px 50px!important;
+}
+
+.very-small{
+  font-size: 12px!important;
+}
+
+.hidden{
+  display:none;
 }

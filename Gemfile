@@ -24,9 +24,12 @@ gem 'devise'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'font-awesome-rails'
+gem 'simple_form'
 gem 'cocoon'
 gem 'slim'
-gem 'rails_12factor', group: :production
+gem 'toastr_rails'
+gem "simple_calendar", "~> 2.0"
+gem 'chosen-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -42,6 +45,10 @@ group :development, :test do
   gem 'byebug'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
@@ -54,5 +61,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 

@@ -6,6 +6,7 @@ class CreateResources < ActiveRecord::Migration
       t.string :description
       t.integer :capacity
       t.belongs_to :resource, index: true, foreign_key: true
+      t.belongs_to :area, index: true, foreign_key: true
 
       t.timestamps null: false
     end

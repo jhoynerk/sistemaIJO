@@ -84,6 +84,17 @@
     </div>
   </li>
 
+  <li class="<%= active_class('prestamos') %>">
+    <a class="collapsible-header waves-effect waves-pink"><%=fa_icon "barcode"%><%=fa_icon "angle-down", class:'right  pink lighten-1' %>Prestamos</a>
+    <div class="collapsible-body" style="<%= open_collapse('prestamos') %>">
+      <ul class="collection">
+        <li class="collection-item <%= active_link('pink lighten-1 active', prestamos_path) %>">
+          <%= link_to 'Nuevo Prestamo', prestamos_path %>
+        </li>
+      </ul>
+    </div>
+  </li>
+
   <li class="<%= active_class('text') %>">
     <a class="collapsible-header waves-effect waves-teal"><%=fa_icon "file-text-o"%><%=fa_icon "angle-down", class:'right teal lighten-2' %>Reportes</a>
     <div class="collapsible-body" style="<%= open_collapse('text') %>">

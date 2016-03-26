@@ -16,4 +16,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "login", to: "devise/sessions#new", as: :login
   end
+
+  get 'prestamos', to: 'order#index', as: :prestamos
+  post 'prestamos', to: 'order#create', as: :orden_created
+  post 'resources/area_by', to: 'resources#resources_by', as: :by_recursos
+
 end

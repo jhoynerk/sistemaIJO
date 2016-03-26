@@ -2,7 +2,7 @@
 
 <h4>
   Listado de Areas
-  <%= link_to "<i class='material-icons'>add</i>".html_safe, new_area_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right' %>
+  <%= link_to "<i class='material-icons add'></i>".html_safe, new_area_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right' %>
 </h4>
 
 <table>
@@ -22,13 +22,13 @@
         <td><%= area.name %></td>
         <td><%= area.institute.name if area.institute.present? %></td>
         <td>
-          <%= link_to "<i class='material-icons'>search</i>".html_safe, area , class: 'btn btn-floating blue'%>
+          <%= link_to "<i class='material-icons search'></i>".html_safe, area , class: 'btn btn-floating blue'%>
         </td>
         <td>
-          <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_area_path(area), class: 'btn btn-floating yellow accent-4' %>
+          <%= link_to "<i class='material-icons create'></i>".html_safe, edit_area_path(area), class: 'btn btn-floating yellow accent-4' %>
         </td>
         <td>
-          <%= link_to "<i class='material-icons'>delete</i>".html_safe, area, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red' %>
+          <%= link_to "<i class='material-icons delete'></i>".html_safe, area, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red' %>
         </td>
       </tr>
     <% end %>

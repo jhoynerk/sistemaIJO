@@ -2,7 +2,7 @@
 
 <h4>
   Listado de Beneficiarios
-  <%= link_to "<i class='material-icons'>add</i>".html_safe, new_beneficiary_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right' %>
+  <%= link_to "<i class='material-icons add'></i>".html_safe, new_beneficiary_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right' %>
 </h4>
 
 <table>
@@ -26,13 +26,13 @@
         <td><%= beneficiary.position %></td>
         <td><%= beneficiary.phone %></td>
         <td>
-          <%= link_to "<i class='material-icons'>search</i>".html_safe, beneficiary , class: 'btn btn-floating blue'%>
+          <%= link_to "<i class='material-icons search'></i>".html_safe, beneficiary , class: 'btn btn-floating blue'%>
         </td>
         <td>
-          <%= link_to "<i class='material-icons'>create</i>".html_safe, edit_beneficiary_path(beneficiary), class: 'btn btn-floating yellow accent-4' %>
+          <%= link_to "<i class='material-icons create'></i>".html_safe, edit_beneficiary_path(beneficiary), class: 'btn btn-floating yellow accent-4' %>
         </td>
         <td>
-          <%= link_to "<i class='material-icons'>delete</i>".html_safe, beneficiary, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red' %>
+          <%= link_to "<i class='material-icons delete'></i>".html_safe, beneficiary, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red' %>
         </td>
       </tr>
     <% end %>

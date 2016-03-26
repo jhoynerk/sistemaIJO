@@ -12,6 +12,9 @@
  *
  *= require_tree .
  *= require_self
-*=require material_icons
-*= require font-awesome
+ *= require material_icons_unicode
+ *= require font-awesome
+ *= require toastr_rails
+ *= require simple_calendar
+ *= require chosen
  */

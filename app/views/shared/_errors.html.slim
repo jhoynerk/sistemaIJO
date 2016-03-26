@@ -1,0 +1,8 @@
+= content_tag :div, class: "errors" do 
+  - if object.full_messages.any?
+    - object.full_messages.each do |msg|
+      = content_tag :li, msg
+  - else 
+    - flash.each do |f| 
+      = content_tag :div, class: f, flash => [f.to_sym] if flash[f.to_sym]
+    = devise_error_messages!

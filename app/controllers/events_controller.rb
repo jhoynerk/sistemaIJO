@@ -40,7 +40,7 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
-  def update
+  def update    
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
@@ -70,6 +70,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:code, :description, :observations, :date_start, :date_end)
+      params.require(:event).permit(:code, :description, :observations, :start_date_field, :start_time_field, :end_date_field, :end_time_field,
+                                    activities_attributes: [:id, :code, :description, :start_date_field, :start_time_field, :end_date_field, :end_time_field, :event_id, :_destroy] )
     end
 end

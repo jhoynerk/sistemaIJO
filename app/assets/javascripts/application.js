@@ -16,6 +16,8 @@
 //= require_tree .
 //= require materialize-sprockets
 //= require cocoon
+//= require toastr
+//= require chosen-jquery
 
 var setupDashboardPage = function() {
   $(".button-collapse").sideNav({
@@ -35,6 +37,7 @@ var setupDashboardPage = function() {
 
   $('select').material_select();
   $("select[required]").css({display: "inline", height: 0, padding: 0, width: 0});
+
 };
 
 $(document).on('page:load ready', setupDashboardPage);

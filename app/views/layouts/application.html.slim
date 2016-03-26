@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title SistemaIJO
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    = render 'layouts/nav'
+    = custom_bootstrap_flash
+    .row
+      .col.s12.m4.l3        
+        .hide-on-med-and-down
+          = render 'layouts/lateral'
+      .col.s12.m12.l9
+        .row
+          .col.s12.m12
+            .card-panel.z-depth-4
+              = yield
