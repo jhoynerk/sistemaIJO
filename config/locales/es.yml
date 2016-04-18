@@ -1,3 +1,11 @@
+es-ve:
+  sunday: domingo
+  monday: lunes
+  tuesday: martes
+  wednesday: miércoles
+  thursday: jueves
+  friday: viernes
+  saturday: sábado
 
 es-VE:
   activerecord:
@@ -6,6 +14,23 @@ es-VE:
       attributes:
         resource:
           description: "Descripción"
+    models:
+      activity: 'Actividad'
+      area: 'Área'
+      beneficiary: 'Beneficiario'
+      event: 'Evento'
+      institute: 'Instituto'
+      resource: 'Recurso'
+      type_resource: 'Tipo de recurso'
+      user: 'Usuario'
+
+    attributes:
+      type_resource:
+        name: 'Nombre'
+        code: 'Abreviatura'
+      activity:
+        time_start: 'Hora inicio'
+        time_end: 'Hora final'
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
@@ -214,8 +239,8 @@ es-VE:
   time:
     am: am
     formats:
-      default: "%a, %d de %b de %Y a las %H:%M:%S%p %Z"
-      long: "%A, %d de %B de %Y a las %I:%M%p"
-      short: "%d de %b a las %H:%M%p"
+      default: "%H:%M:%S%p %Z"
+      long: "%I:%M%p"
+      short: "%H:%M%p"
       big: '%A, %d %B %Y a las %I:%M%p'
     pm: pm

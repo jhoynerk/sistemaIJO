@@ -1,0 +1,28 @@
+= custom_errors(@type_resource.errors)
+= simple_form_for(@type_resource) do |f|
+  p
+    = f.label :code, 'Abrevitura'
+    = f.text_field :code, required: true, maxlength: 3
+  p
+    = f.label :name, 'Nombre'
+    = f.text_field :name, required: true
+  p
+    label Tipo de recurso
+  p
+    = f.radio_button :pedagogic, 'false'
+    = f.label :pedagogic, 'Tecnologico', :value => 'false' 
+  p
+    = f.radio_button :pedagogic, 'true'
+    = f.label :pedagogic, 'Pedagógico', :value => 'true' 
+  p
+    label Movilidad del recurso
+  p
+    = f.radio_button :movil, 'false'
+    = f.label :movil, 'Fijo', :value => 'false' 
+  p
+    = f.radio_button :movil, 'true'
+    = f.label :movil, 'Móvil', :value => 'true' 
+  p
+    = link_to 'Back', type_resources_path, class: 'btn blue lighten-3 left' 
+    = f.submit('Agregar', class: 'right btn blue') 
+.clearfix

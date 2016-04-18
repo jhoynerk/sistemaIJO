@@ -67,6 +67,26 @@ class ResourcesController < ApplicationController
     return render json: area.resources
   end
 
+  # GET /resources/type_resource/new
+  def new_type_resource
+    @resource = Resource.new
+  end
+
+  # POST /resources
+  # POST /resources.json
+  def create_type_resource
+    @resource = TypeResource.new(resource_params)
+    respond_to do |format|
+      if @resource.save
+        format.html { redirect_to @resource, notice: 'El recurso se ha creado correctamente.' }
+        format.json { render :show, status: :created, location: @resource }
+      else
+        format.html { render :new }
+        format.json { render json: @resource.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
@@ -75,6 +95,7 @@ class ResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params.require(:resource).permit(:code, :name, :description, :capacity, :resource_id, :area_id, resources_attributes: [:id, :code, :name, :description, :capacity, :resource_id, :area_id, :_destroy] )
+      params.require(:resource).permit(:code, :name, :description, :capacity, :resource_id, :area_id, 
+                                       resources_attributes: [:id, :code, :name, :description, :resource_id, :area_id, :_destroy] )
     end
 end

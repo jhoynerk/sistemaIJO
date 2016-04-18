@@ -1,11 +1,5 @@
-<p id="notice"><%= notice %></p>
 
 <h4>Ver Actividad</h4>
-
-<p>
-  <strong>Código:</strong>
-  <%= @activity.code %>
-</p>
 
 <p>
   <strong>Descripción:</strong>
@@ -13,13 +7,15 @@
 </p>
 
 <p>
-  <strong>Fecha de Inicio:</strong>
-  <%= @activity.date_start %>
+  <strong>Fecha:</strong>
+  <%= @activity.day %>
 </p>
 
 <p>
-  <strong>Fecha de Culminación:</strong>
-  <%= @activity.date_end %>
+  <strong>Horario:</strong>
+  <%= @activity.time_start %>
+  |
+  <%= @activity.time_end %>
 </p>
 
 <p>

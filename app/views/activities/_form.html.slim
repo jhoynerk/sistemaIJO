@@ -1,23 +1,40 @@
+= custom_errors(@activity.errors)
 = form_for(@activity) do |f|
-  .field
-    = f.label :code, 'Código'
-    = f.number_field :code
-  .field
+  p
+    = f.label :beneficiary_id, 'Seleccione el responsable'
+    = f.select(:beneficiary_id, Beneficiary.all.collect {|p| [ p.first_name + " " + p.last_name, p.id ] }, { :prompt => 'Seleccione al responsable'}, {class: 'browser-default chosen-select', required: true})
+  p
+    = f.label :area_id, 'Área'
+    = f.select(:area_id, Area.disponible.all.collect {|p| [ p.name, p.id ] }, { include_blank: 'Seleccione un Área' }, {class: 'browser-default chosen-select', required: true})
+  p
     = f.label :description, 'Descripción'
     = f.text_field :description, required: true  
-  .field
-    = f.label :date_start, 'Fecha de Inicio'
-    = f.date_field :start_date_field, value: @activity.start_date_field, class: "datepicker", required: true
-    = f.time_field :start_time_field, value: @activity.start_time_field, class: "timepicker", required: true
-  .field
-    = f.label :date_end, 'Fecha de Culminación'
-    = f.date_field :end_date_field, value: @activity.end_date_field, class: "datepicker", required: true
-    = f.time_field :end_time_field, value: @activity.end_time_field, class: "timepicker", required: true
-  .row
-    .input-field.col.s12
-      = f.select(:event_id, Event.all.collect {|p| [ p.description, p.id ] }, { include_blank: 'Seleccione si pertenece a algún evento' }, required: false)
-  .input-field
+  p
+    = f.label :day, 'Día'
+    = f.date_field :day, class: "datepicker", required: true
+  p
+    .col.m12
+      = f.label :time_start, 'Horario'
+    .col.m6
+      = f.text_field :time_start, class: "timepicker", required: true
+    .col.m6
+      = f.text_field :time_end, class: "timepicker", required: true
+  p
+    label Añadir recursos
+    = f.fields_for :activities_resources do |resource|
+      = render 'activities_resource_fields', f: resource
+    .links
+      = link_to_add_association "Agregar recurso asociado<i class='material-icons add right'></i></a>".html_safe, f, :activities_resources, class: "waves-effect waves-light btn green lighten-1"
+  .clearfix
+  p
     = link_to 'Back', :back, class: 'btn blue lighten-3 left'
     = f.submit('Agregar', class: 'right btn blue')
 .clearfix
+
+javascript:
+  $(document).ready(function(){
+    $('select').material_select();
+    $('.chosen-select').chosen();
+    $('.timepicker').timepicker({ 'timeFormat': 'h:i A' });
+  });
 

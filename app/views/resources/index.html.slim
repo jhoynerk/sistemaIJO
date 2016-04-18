@@ -1,0 +1,31 @@
+h4
+  | Listado de Recursos
+  = link_to "<i class='material-icons add'></i>".html_safe, new_resource_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
+
+table#datatable
+  thead
+    tr
+      th Código
+      th Nombre
+      th Descripción
+      th Pertene al Recurso
+      th
+  tbody
+    - @resources.each do |resource|
+      tr
+        td = resource.code
+        td = resource.name
+        td = resource.description
+        td = link_to  resource.resource.code.to_s+' '+resource.resource.name.to_s, resource.resource if resource.resource.present?
+        td 
+          = link_to "<i class='material-icons search'></i>".html_safe, resource , class: 'btn btn-floating blue'        
+          = link_to "<i class='material-icons create'></i>".html_safe, edit_resource_path(resource), class: 'btn btn-floating yellow accent-4'
+          = link_to "<i class='material-icons delete'></i>".html_safe, resource, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red'
+
+- content_for :javascript
+  = javascript_include_tag 'tables'
+
+javascript:
+  $(document).ready(function(){
+    $('select').addClass('browser-default');
+  });

@@ -12,12 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require turbolinks
 //= require_tree .
 //= require materialize-sprockets
 //= require cocoon
 //= require toastr
 //= require chosen-jquery
+//= require notifications.js
+//= require jquery.timepicker.js
 
 var setupDashboardPage = function() {
   $(".button-collapse").sideNav({
@@ -32,12 +35,14 @@ var setupDashboardPage = function() {
 
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+    min: new Date(),
+    closeOnClear: true,
+    closeOnSelect: true
   });
 
-  $('select').material_select();
+  //$('select').material_select();
   $("select[required]").css({display: "inline", height: 0, padding: 0, width: 0});
-
 };
 
 $(document).on('page:load ready', setupDashboardPage);

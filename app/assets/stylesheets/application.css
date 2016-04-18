@@ -17,4 +17,5 @@
  *= require toastr_rails
  *= require simple_calendar
  *= require chosen
+ *= require jquery.timepicker.css
  */

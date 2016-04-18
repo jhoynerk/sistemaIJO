@@ -1,0 +1,7 @@
+en:
+  enumerations:
+    activity_status:
+      pending: "Pending"
+      current: "Current"
+      done: "Done"
+      suspended: "Suspended"

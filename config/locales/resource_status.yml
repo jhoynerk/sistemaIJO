@@ -1,0 +1,6 @@
+en:
+  enumerations:
+    resource_status:
+      available: "Available"
+      maintenance: "Maintenance"
+      disjointed: "Disjointed"

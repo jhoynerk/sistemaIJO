@@ -26,12 +26,12 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
-
     respond_to do |format|
       if @activity.save
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
       else
+        p @activity.errors.inspect
         format.html { render :new }
         format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
@@ -70,6 +70,7 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:code, :description, :start_date_field, :start_time_field, :end_date_field, :end_time_field, :event_id)
+      params.require(:activity).permit(:beneficiary_id, :description, :day, :time_start, :time_end, :event_id, :area_id,
+                                       activities_resources_attributes: [:beneficiary_id, :description, :day, :time_start, :time_end, :event_id, :area_id, :_destroy])
     end
 end

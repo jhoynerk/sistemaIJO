@@ -1,0 +1,28 @@
+h4
+  | Listado de Areas
+  = link_to "<i class='material-icons add'></i>".html_safe, new_area_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
+table#datatable.tables
+  thead
+    tr
+      th Código
+      th Nombre
+      th Instituto
+      th
+  tbody
+    - @areas.each do |area|
+      tr
+        td = area.code
+        td = area.name
+        td = area.institute.name if area.institute.present?
+        td
+          = link_to "<i class='material-icons search'></i>".html_safe, area , class: 'btn btn-floating blue'
+          = link_to "<i class='material-icons create'></i>".html_safe, edit_area_path(area), class: 'btn btn-floating yellow accent-4'
+          = link_to "<i class='material-icons delete'></i>".html_safe, area, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red'
+
+- content_for :javascript
+  = javascript_include_tag 'tables'
+
+javascript:
+  $(document).ready(function(){
+    $('select').addClass('browser-default');
+  });

@@ -3,7 +3,7 @@ default: &default
   pool: 5
   timeout: 5000
   host: localhost
-  username: jhoynerk
+  username: prizni
   password: test
   port: 5432
 
@@ -17,7 +17,4 @@ test: &test
 
 production:
   <<: *default
-  database: sistemaIJO_test
-
-cucumber:
-  <<: *test
+  database: sistemaIJO_production

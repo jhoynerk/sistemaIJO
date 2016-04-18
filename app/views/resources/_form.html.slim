@@ -1,41 +1,54 @@
 = custom_errors(@resource.errors)
 = form_for(@resource) do |f|
   .field
-    = f.label :code, 'Código'
-    = f.number_field :code, required: true 
+    = f.label :code, 'Abreviatura'
+    = f.text_field :code, required: true 
   .field
     = f.label :name, 'Nombre' 
     = f.text_field :name, required: true 
   .field
     = f.label :description, 'Descripción' 
     = f.text_field :description
-  .field
-    = f.label :capacity, 'Capacidad' 
-    = f.number_field :capacity, required: true 
-  .row
-    .input-field.col.s12
-      select name="resource[area_id]" id="resource_area_id" data-link="#{by_recursos_path}" required="required"
-        - Institute.all.each do |i|
-          optgroup label="#{i.name}"
-          - Area.where(institute_id: i.id).each do |a|
-              option value="#{a.id}" = a.name
-      = f.label :area_id, 'Seleccione al area que pertenece' 
-  .row
-    .input-field.col.s12
-      = f.select(:resource_id, '', { include_blank: 'Seleccione si pertenece a otro recurso' }, required: false)
-      = f.label :resource_id, 'Seleccione si pertenece a otro recurso' 
-  .row
+  p
+    label Tipo de recurso
+  p
+    = f.radio_button :pedagogic, 'false'
+    = f.label :pedagogic, 'Tecnologico', :value => 'false' 
+  p
+    = f.radio_button :pedagogic, 'true'
+    = f.label :pedagogic, 'Pedagógico', :value => 'true' 
+  p
+    label Movilidad del recurso
+  p
+    = f.radio_button :movil, 'false'
+    = f.label :movil, 'Fijo', :value => 'false' 
+  p
+    = f.radio_button :movil, 'true'
+    = f.label :movil, 'Móvil', :value => 'true' 
+  p
+    = f.label :area_id, 'Área al que pertenece'
+    select name="resource[area_id]" id="resource_area_id" data-link="#{by_recursos_path}" required="required"
+      - Institute.all.each do |i|
+        optgroup label="#{i.name}"
+        - Area.disponible.where(institute_id: i.id, ).each do |a|
+            option value="#{a.id}" = a.name
+  p
+    = f.label :resource_id, 'Recurso al que pertenece (Si aplica)'
+    = f.select(:resource_id, '', { include_blank: 'Seleccione recurso' }, required: false)
+  p
     = f.fields_for :resources do |resource|
       = render 'resource_fields', f: resource
     .links
       = link_to_add_association "Agregar recurso asociado<i class='material-icons add right'></i></a>".html_safe, f, :resources, class: "waves-effect waves-light btn green lighten-1"
+  .clearfix
   .input-field
     = link_to 'Back', resources_path, class: 'btn blue lighten-3 left' 
     = f.submit('Agregar', class: 'right btn blue') 
-  .clearfix
+.clearfix
 
 javascript:
   $(document).ready(function() {
+    $('select').material_select();
     $('#resource_area_id').change(function() {
         $.ajax({
            url: $(this).data('link'), // this will be routed

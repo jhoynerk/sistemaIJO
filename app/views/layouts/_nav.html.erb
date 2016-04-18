@@ -1,18 +1,15 @@
 <nav>
   <div class="nav-wrapper blue darken-3">
     <%= link_to image_tag('logo-min.png', height: '100px'), root_path, class: "brand-logo" %>
+    <a href="#" data-activates="slide-out" class="button-collapse">
+      <%= fa_icon "bars" %>
+    </a>
     <ul class="right hide-on-med-and-down">
-      <!-- <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-      <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
-      <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-      <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li> -->
       <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
     </ul>
     <ul id="slide-out" class="side-nav">
-      <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
       <li><%= render 'layouts/lateral' %><li>
+      <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
     </ul>
-    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
   </div>
 </nav>
-

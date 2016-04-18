@@ -1,7 +1,10 @@
-@import "materialize";
-nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+nav, nav a.button-collapse, nav a.button-collapse i {
     height: 100px;
     line-height: 100px;
+}
+
+nav a.button-collapse{
+  left: 20px;
 }
 .panel-lateral{
   li{
@@ -39,6 +42,8 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
   z-index: 999999!important;
   top: 130px!important;
   right: 40px!important;
+  width: 400px!important;
+  height: 60px!important;
 }
 
 
@@ -65,3 +70,9 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
 .hidden{
   display:none;
 }
+
+
+.chosen-container-single .chosen-search input[type="text"] {
+  padding: 4px 0px 4px 0px!important;
+}
+

@@ -1,16 +1,108 @@
+= custom_errors(@area.errors)
 = form_for(@area) do |f|
-  .input-field
-    = f.label :code, 'Código'
-    = f.number_field :code, required: true 
-  .input-field
+  p
+    = f.label :code, 'Abrevitura'
+    = f.text_field :code, required: true, maxlength: 5
+  p
     = f.label :name, 'Nombre'
-    = f.text_field :name, required: true 
-  .row
-    .input-field.col.s12
-      = f.select(:institute_id, Institute.all.collect {|p| [ p.name, p.id ] }, { include_blank: 'Seleccione un Instituto' }, required: false)
-  .input-field
+    = f.text_field :name, required: true
+  p
+    = f.label :reservable, 'Reservable'
+    .switch
+      label
+        | No
+        = f.check_box :reservable
+        span.lever
+        | Si
+  p
+    = f.label :status, 'Estado'
+    = f.select(:status, AreaStatus.to_a, { include_blank: 'Estado' }, required: false)
+
+  p
+    = f.label :institute_id, 'Instituto'
+    = f.select(:institute_id, Institute.all.collect {|p| [ p.name, p.id ] }, { include_blank: 'Seleccione un Instituto' }, required: false)
+  p
+    = f.label :area_id, 'Área a la que pertenece (Si aplica)'
+    = f.select(:area_id, '',{ include_blank: 'Seleccione un área' }, required: false)
+    input#select_area_id type="hidden" value="#{@area.area_id}"
+  p
+    = label_tag 'recursos[status]', '¿Quiere añadir multiples recursos?'
+    .switch
+      label
+        | No
+        = check_box_tag 'recursos[status]'
+        span.lever
+        | Si
+  #multiples_recursos
+    p 
+      label Multiples recursos de
+      = select nil, 'recursos[multiple_recursos]', TypeResource.all.collect {|p| [ p.name, p.id ]}, { include_blank: 'Seleccione un Recurso' }
+    p 
+      label Cantidad del recurso
+      = number_field_tag 'recursos[cantidad]', within: 1..32
+  p
+    label Añadir recursos
+    = f.fields_for :resources do |resource|
+      = render 'resources/resource_fields', f: resource
+    .links
+      = link_to_add_association "Agregar recurso asociado<i class='material-icons add right'></i></a>".html_safe, f, :resources, class: "waves-effect waves-light btn green lighten-1", partial: 'resources/resource_fields'
+  .clearfix
+
+  p
     = link_to 'Back', areas_path, class: 'btn blue lighten-3 left' 
     = f.submit('Agregar', class: 'right btn blue') 
 .clearfix
 
+javascript:
+  $(document).ready(function(){
+    $('select').material_select();
+    $('#multiples_recursos').addClass('hidden');
+    var load_select_areas = function(){
+      console.log($("#area_institute_id :selected").val())
+      var institute = $("#area_institute_id :selected").val()
+      $.ajax({
+        url: "#{by_areas_path}",
+        type: 'POST',
+        data: {
+         institute_id: institute
+        },
+        async: true,
+        dataType: "json",
+        error: function(XMLHttpRequest, errorTextStatus, error){
+                  alert("Failed: "+ errorTextStatus+" ;"+error);
+              },
+        success: function(data){
+        $("#area_area_id").empty().html(' ');
+        $("#area_area_id").append(new Option('Seleccione si pertenece a otra area', ''));
+        if (data.length != 0){
+          for(var i in data){
+            var id = data[i].id;
+            var title = data[i].name;
+            if ($('#select_area_id').val() == id){
+            console.log('entro')
+              $("#area_area_id").append(new Option(title, id, false, true));
+            }else{
+              $("#area_area_id").append(new Option(title, id));
+            }
+          }
+        }
+        $('#area_area_id').material_select();
+        }
+      });
+    }
+    $('#area_institute_id').on('change',function(){
+      load_select_areas();
+    });
+    if ($('#select_area_id').val() != '' || $('#area_institute_id').val() != ''){
+      load_select_areas();
+    }
+
+    $('#recursos_status').on('click', function(){
+      if ($(this).is(':checked')){
+        $('#multiples_recursos').removeClass('hidden');
+      }else{
+        $('#multiples_recursos').addClass('hidden');
+      }
+    });
+  });
 

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.2'
+# postgresql
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -20,25 +21,29 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+# authentificación de usuario
 gem 'devise'
+# diseño
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'font-awesome-rails'
+# generar formularios anidados
 gem 'simple_form'
 gem 'cocoon'
+# gestor template
 gem 'slim'
+# ventana emergente de mensajes.
 gem 'toastr_rails'
+# calendario
 gem "simple_calendar", "~> 2.0"
+# select multiple 
 gem 'chosen-rails'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# enumerate
+gem 'enumerate_it'
+# datatable
+gem 'jquery-datatables-rails', '~> 3.3.0'
+# timepicker
+gem 'jquery-timepicker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -46,14 +51,13 @@ group :development, :test do
 end
 
 group :production do
+  # heroku
   gem 'rails_12factor'
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'rspec'
 end
 
 group :development do

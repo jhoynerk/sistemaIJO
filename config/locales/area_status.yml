@@ -1,0 +1,13 @@
+en:
+  enumerations:
+    area_status:
+      available: "Available"
+      maintenance: "Maintenance"
+      disjointed: "Disjointed"
+
+es-VE:
+  enumerations:
+    area_status:
+      available: "Disponible"
+      maintenance: "Mantenimiento"
+      disjointed: "Desarticulado"

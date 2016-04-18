@@ -1,0 +1,57 @@
+.nested-fields
+  .col.m6.s12
+    p
+      .col.m12
+        = label_tag 'Rango de Fechas'
+      .col.m6
+        = text_field_tag 'activity[date_start]', '', class: "datepicker", required: true
+      .col.m6
+        = text_field_tag 'activity[date_end]', '', class: "datepicker", required: true
+    p
+      = label_tag 'activity[days]', "Los días:"
+      - Date::DAYNAMES.each_with_index do |day, key|
+        .col.m6
+          = label_tag day
+          .switch
+            label
+              | No
+              = check_box_tag 'activity[days][]', key + 1 
+              span.lever
+              | Si
+    p
+      .col.m12
+        = label_tag :time_start, 'Horario'
+      .col.m6
+        = text_field_tag 'activity[time_start]', '', class: "timepicker", required: true
+      .col.m6
+        = text_field_tag 'activity[time_end]', '', class: "timepicker", required: true
+    .clearfix
+    p
+      = link_to_remove_association "Quitar recurso<i class='material-icons remove right'></i></a>".html_safe, f, class: "waves-effect waves-light btn red lighten-1"
+
+javascript:
+  $(document).ready(function(){
+    $('.chosen-select').chosen();
+    $('.timepicker').timepicker({ 
+      'timeFormat': 'h:i A',
+      'minTime': '7:00am',
+      'maxTime': '7:30pm'
+    });
+    $('#activity_date_start').pickadate({
+      selectMonths: true,
+      selectYears: 15,
+      min: new Date(),
+      closeOnClear: true,
+      closeOnSelect: true
+    });
+
+    $('#activity_date_start').on('change', function(){
+      $('#activity_date_end').pickadate({
+        selectMonths: true,
+        selectYears: 15,
+        min: new Date($(this).val()),
+        closeOnClear: true,
+        closeOnSelect: true
+      });
+    });
+  });

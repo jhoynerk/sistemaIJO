@@ -23,5 +23,9 @@ module SistemaIJO
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.default_locale = 'es-VE'
+    config.i18n.locale = 'es-VE'
+    config.time_zone = 'Caracas'
+    config.active_record.default_timezone = :local
+    config.assets.precompile += %w( tables.js )
   end
 end

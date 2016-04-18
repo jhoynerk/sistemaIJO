@@ -7,9 +7,12 @@ html
     = csrf_meta_tags
   body
     = render 'layouts/nav'
-    = custom_bootstrap_flash
+    - if flash[:alert]
+        #alert.hide = flash[:alert]
+    - if flash[:notice]
+        #notice.hide = flash[:notice]
     .row
-      .col.s12.m4.l3        
+      .col.s12.m4.l3
         .hide-on-med-and-down
           = render 'layouts/lateral'
       .col.s12.m12.l9

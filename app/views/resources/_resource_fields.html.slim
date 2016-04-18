@@ -3,15 +3,29 @@
     .field
       = f.hidden_field :id
       = f.label :code, 'Código'
-      = f.number_field :code, required: true 
+      = f.text_field :code, required: true 
     .field
       = f.label :name, 'Nombre' 
       = f.text_field :name, required: true 
     .field
       = f.label :description, 'Descripción' 
       = f.text_field :description
-    .field
-      = f.label :capacity, 'Capacidad' 
-      = f.number_field :capacity, required: true 
+      = f.hidden_field :area_id
+    p
+      label Tipo de recurso
+    p
+      = f.radio_button :pedagogic, 'false'
+      = f.label :pedagogic, 'Tecnologico', :value => 'false' 
+    p
+      = f.radio_button :pedagogic, 'true'
+      = f.label :pedagogic, 'Pedagógico', :value => 'true' 
+    p
+      label Movilidad del recurso
+    p
+      = f.radio_button :movil, 'false'
+      = f.label :movil, 'Fijo', :value => 'false' 
+    p
+      = f.radio_button :movil, 'true'
+      = f.label :movil, 'Móvil', :value => 'true' 
     .row
-      = link_to_remove_association "Quitar recurso asociado<i class='material-icons right'>remove</i></a>".html_safe, f, class: "waves-effect waves-light btn red lighten-1"
+      = link_to_remove_association "Quitar recurso<i class='material-icons remove right'></i></a>".html_safe, f, class: "waves-effect waves-light btn red lighten-1"
