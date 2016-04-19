@@ -76,3 +76,13 @@ nav a.button-collapse{
   padding: 4px 0px 4px 0px!important;
 }
 
+#toast-container{
+  right: 5;
+  div{
+    width: 500px!important;
+  }
+}
+
+.toast-message{
+  word-break: normal!important;
+}

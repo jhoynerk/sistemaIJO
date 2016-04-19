@@ -10,17 +10,14 @@
       .col.m12
         = f.label :date_end, 'Horario'
       .col.m6
-        = f.text_field :time_start, class: "timepicker", required: true
+        = f.text_field :time_start, class: "timepicker", value: (f.object.opening_time unless f.object.nil?), required: true
       .col.m6
-        = f.text_field :time_end, class: "timepicker", required: true
+        = f.text_field :time_end, class: "timepicker", value: (f.object.close_time unless f.object.nil?), required: true
     p
       label Añadir recursos
-      = f.fields_for :activities_resources do |resource|
-        = render 'activities/activities_resource_fields', f: resource
-      .links
-        = link_to_add_association "Agregar recurso<i class='material-icons add right'></i></a>".html_safe, f, :activities_resources, class: "waves-effect waves-light btn green lighten-1", partial: 'activities/activities_resource_fields'
+      = f.collection_select :resource_ids, Resource.disponible, :id, :name, {:selected => f.object.resource_ids, include_blank: true} , class: 'browser-default chosen-select', multiple: 'multiple'
     .row
-      = link_to_remove_association "Quitar actividad<i class='material-icons remove right'></i></a>".html_safe, f, class: "waves-effect waves-light btn red lighten-1", partial: 'activities/activities_resource_fields'
+      = link_to_remove_association "Quitar actividad<i class='material-icons remove right'></i></a>".html_safe, f, class: "waves-effect waves-light btn red lighten-1", partial: 'activities/resource_fields'
 javascript:
    $('.datepicker').pickadate({
       selectMonths: true,
@@ -29,5 +26,10 @@ javascript:
       closeOnClear: true,
       closeOnSelect: true
     });
-    $('.timepicker').timepicker({ 'timeFormat': 'h:i A' });
+    $('.chosen-select').chosen();
+    $('.timepicker').timepicker({ 
+      'timeFormat': 'h:i A',
+      'minTime': '7:00am',
+      'maxTime': '7:30pm'
+    });
 

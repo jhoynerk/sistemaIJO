@@ -9,7 +9,7 @@ class Resource < ActiveRecord::Base
   belongs_to :type_resource
   belongs_to :area
   has_and_belongs_to_many :beneficiaries
-  #has_and_belongs_to_many :activities
+  has_and_belongs_to_many :activities
   has_and_belongs_to_many :events
 
   accepts_nested_attributes_for :resources, reject_if: :all_blank, allow_destroy: true
@@ -28,6 +28,8 @@ class Resource < ActiveRecord::Base
   scope :disjointed, -> { where(status: ResourceStatus::DISJOINTED) }
   scope :movil, -> { where(movil: true) }
   scope :fijo, -> { where(movil: false) }
+
+  scope :disponible, -> { available.movil }
 
   def normalize_code
     self.code = "#{area.code}-#{self.code}"

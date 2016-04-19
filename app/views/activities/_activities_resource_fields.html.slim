@@ -2,7 +2,7 @@
   .col.m4.s12
     p
       = f.label :resource_id, 'Recurso'
-      = f.select(:resource_id, Resource.available.movil.all.collect {|p| [ "#{p.code} #{p.name}", p.id ] }, { include_blank: 'Seleccione un recurso' }, {class: 'browser-default chosen-select', required: true})
+      = f.select(:resource_id, Resource.disponible.all.collect {|p| [ "#{p.code} #{p.name}", p.id ] }, { include_blank: 'Seleccione un recurso' }, {class: 'browser-default chosen-select', required: true})
     .row
       = link_to_remove_association "Quitar recurso<i class='material-icons remove right'></i></a>".html_safe, f, class: "waves-effect waves-light btn red lighten-1"
 

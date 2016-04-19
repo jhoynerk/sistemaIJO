@@ -11,30 +11,42 @@
     = f.text_field :description, required: true  
   p
     = f.label :day, 'Día'
-    = f.date_field :day, class: "datepicker", required: true
+    = f.date_field :day, class: "datepicker", value: (@date unless @date.nil? ), required: true
   p
     .col.m12
       = f.label :time_start, 'Horario'
     .col.m6
-      = f.text_field :time_start, class: "timepicker", required: true
+      = f.text_field :time_start, class: "timepicker", value: (@activity.opening_time unless @activity.nil?), required: true
     .col.m6
-      = f.text_field :time_end, class: "timepicker", required: true
+      = f.text_field :time_end, class: "timepicker", value: (@activity.close_time unless @activity.nil?), required: true
   p
     label Añadir recursos
-    = f.fields_for :activities_resources do |resource|
-      = render 'activities_resource_fields', f: resource
-    .links
-      = link_to_add_association "Agregar recurso asociado<i class='material-icons add right'></i></a>".html_safe, f, :activities_resources, class: "waves-effect waves-light btn green lighten-1"
+    = f.collection_select :resource_ids, Resource.disponible, :id, :name, {:selected => @activity.resource_ids, include_blank: true} , class: 'browser-default chosen-select', multiple: 'multiple'
   .clearfix
   p
     = link_to 'Back', :back, class: 'btn blue lighten-3 left'
     = f.submit('Agregar', class: 'right btn blue')
 .clearfix
 
+- unless @date.nil?
+  javascript:
+    $('.datepicker').pickadate('set').set('select', new Date("#{@date}"));
+
 javascript:
   $(document).ready(function(){
     $('select').material_select();
     $('.chosen-select').chosen();
-    $('.timepicker').timepicker({ 'timeFormat': 'h:i A' });
+    $('#activity_date_start').pickadate({
+      selectMonths: true,
+      selectYears: 15,
+      min: new Date(),
+      closeOnClear: true,
+      closeOnSelect: true
+    });
+    $('.timepicker').timepicker({ 
+      'timeFormat': 'h:i A',
+      'minTime': '7:00am',
+      'maxTime': '7:30pm'
+    });
   });
 

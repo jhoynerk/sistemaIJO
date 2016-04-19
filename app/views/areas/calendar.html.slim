@@ -1,0 +1,40 @@
+ul.collapsible.popout data-collapsible="accordion" 
+  li
+    .collapsible-header.active
+      i.material-icons> filter_drama
+      | Semanal
+    .collapsible-body
+      = week_calendar number_of_weeks: 1 do |date|
+        = date.strftime("%e/%m")
+        = link_to "<i class='material-icons add very-small'></i>".html_safe, new_activity_path(date: date)
+        - hour = '07:00am'.to_datetime
+        - (1..24).each do |c|
+          p = "#{hour.strftime('%I:%M%P')} "
+          - @activities.each do |e|
+            - h = hour.strftime('%I:%M%P')
+            - s = e.time_start.strftime('%I:%M%P')
+            - n = e.time_end.strftime('%I:%M%P')
+            - if (e.day.to_date == date.to_date && ( ( h == s or h == n ) or ( h > s and h < n ) ))
+              .col.s12.m10.offset-m1.center.chip.light-green.lighten-3
+                = e.area.code
+                | | 
+                = link_to truncate(e.description, length: 15), e
+          - hour = hour + 30.minutes
+          .clearfix
+          hr
+  li
+    .collapsible-header
+      i.material-icons> place
+      | Mensual
+    .collapsible-body
+      = month_calendar events: @activities  do |date, meetings|
+        = date.strftime("%e")
+        = link_to "<i class='material-icons add very-small'></i>".html_safe, root_path
+        - @activities.each do |e|
+          - if (e.day.to_date == date.to_date)
+            .col.s12.m10.offset-m1.center.chip.deep-orange.lighten-3
+              = link_to truncate(e.description, length: 15), e 
+
+
+
+

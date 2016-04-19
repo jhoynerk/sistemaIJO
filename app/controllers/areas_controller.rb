@@ -8,6 +8,10 @@ class AreasController < ApplicationController
     @areas = Area.all
   end
 
+  def calendar
+    @activities = Area.find(params[:area_id]).activities
+  end
+
   # GET /areas/1
   # GET /areas/1.json
   def show

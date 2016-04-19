@@ -16,6 +16,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @activity = Activity.new
+    @date = params[:date]
   end
 
   # GET /activities/1/edit
@@ -71,6 +72,6 @@ class ActivitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
       params.require(:activity).permit(:beneficiary_id, :description, :day, :time_start, :time_end, :event_id, :area_id,
-                                       activities_resources_attributes: [:beneficiary_id, :description, :day, :time_start, :time_end, :event_id, :area_id, :_destroy])
+                                       resource_ids: [])
     end
 end

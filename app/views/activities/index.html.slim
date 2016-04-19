@@ -5,6 +5,7 @@ table#datatable
   thead
     tr
       th Descripción
+      th Área
       th Day
       th Hora de Inicio
       th Hora de Culminación
@@ -15,6 +16,7 @@ table#datatable
     - @activities.each do |activity|
       tr
         td = activity.description
+        td = activity.area.name
         td = l(activity.day, format: :default)
         td = l(activity.time_start, format: :long)
         td = l(activity.time_end, format: :long)

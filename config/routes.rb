@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :events
   resources :resources
   resources :beneficiaries
-  resources :areas
+  resources :areas do
+    get "/calendar", to: "areas#calendar", as: :calendar
+  end
   resources :institutes
   resources :usuarios, except: [:destroy]
   devise_for :users
