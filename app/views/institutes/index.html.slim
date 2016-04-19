@@ -1,0 +1,32 @@
+h4
+  | Listado de Instituciones
+
+  = link_to "<i class='material-icons add'></i>".html_safe, new_institute_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
+h4
+
+table#datatable.tables
+  thead
+    tr
+      th Abreviaturath
+      th Nombre
+
+  tbody
+    - @institutes.each do |institute|
+      tr
+        td = institute.code
+        td = institute.name
+        td
+           = link_to "<i class='material-icons search'></i>".html_safe, institute , class: 'btn btn-floating blue'
+        td
+          = link_to "<i class='material-icons create'></i>".html_safe, edit_institute_path(institute), class: 'btn btn-floating yellow accent-4'
+        td
+          = link_to "<i class='material-icons delete'></i>".html_safe, institute, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red'
+
+- content_for :javascript
+  = javascript_include_tag 'tables'
+
+javascript:
+  $(document).ready(function(){
+    $('select').addClass('browser-default');
+  });
+

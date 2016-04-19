@@ -29,7 +29,7 @@ class BeneficiariesController < ApplicationController
 
     respond_to do |format|
       if @beneficiary.save
-        format.html { redirect_to @beneficiary, notice: 'Beneficiary was successfully created.' }
+        format.html { redirect_to @beneficiary, notice: 'El beneficiario fue creado éxitosamente.' }
         format.json { render :show, status: :created, location: @beneficiary }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class BeneficiariesController < ApplicationController
   def update
     respond_to do |format|
       if @beneficiary.update(beneficiary_params)
-        format.html { redirect_to @beneficiary, notice: 'Beneficiary was successfully updated.' }
+        format.html { redirect_to @beneficiary, notice: 'El beneficiario fue modificado éxitosamente.' }
         format.json { render :show, status: :ok, location: @beneficiary }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class BeneficiariesController < ApplicationController
   def destroy
     @beneficiary.destroy
     respond_to do |format|
-      format.html { redirect_to beneficiaries_url, notice: 'Beneficiary was successfully destroyed.' }
+      format.html { redirect_to beneficiaries_url, notice: 'El beneficiario fue eliminado éxitosamente.' }
       format.json { head :no_content }
     end
   end

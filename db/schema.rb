@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20160417183544) do
   add_index "incidences", ["resource_id"], name: "index_incidences_on_resource_id", using: :btree
 
   create_table "institutes", force: :cascade do |t|
-    t.integer  "code"
+    t.string   "code"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

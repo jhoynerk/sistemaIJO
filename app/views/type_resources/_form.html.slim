@@ -10,19 +10,19 @@
     label Tipo de recurso
   p
     = f.radio_button :pedagogic, 'false'
-    = f.label :pedagogic, 'Tecnologico', :value => 'false' 
+    = f.label :pedagogic, 'Tecnologico', :value => 'false'
   p
     = f.radio_button :pedagogic, 'true'
-    = f.label :pedagogic, 'Pedagógico', :value => 'true' 
+    = f.label :pedagogic, 'Pedagógico', :value => 'true'
   p
     label Movilidad del recurso
   p
     = f.radio_button :movil, 'false'
-    = f.label :movil, 'Fijo', :value => 'false' 
+    = f.label :movil, 'Fijo', :value => 'false'
   p
     = f.radio_button :movil, 'true'
-    = f.label :movil, 'Móvil', :value => 'true' 
+    = f.label :movil, 'Móvil', :value => 'true'
   p
-    = link_to 'Back', type_resources_path, class: 'btn blue lighten-3 left' 
-    = f.submit('Agregar', class: 'right btn blue') 
+    = link_to 'Regresar', type_resources_path, class: 'btn blue lighten-3 left'
+    = f.submit('Agregar', class: 'right btn blue')
 .clearfix

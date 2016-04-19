@@ -14,7 +14,7 @@
   .col.m12
     hr
   .col.m4
-    strong Descripción:  
+    strong Descripción:
   .col.m8
     = @resource.description
   .col.m12
@@ -35,10 +35,10 @@
       - @resource.resources.each do |r|
         = link_to r.code.to_s+' '+r.name.to_s, r
         br
-      
+
 
 
 p
-  = link_to 'Back', resources_path, class: 'btn blue lighten-3 left'
+  = link_to 'Regresar', resources_path, class: 'btn blue lighten-3 left'
   = link_to 'Edición', edit_resource_path(@resource), class: 'right btn blue'
 .clearfix

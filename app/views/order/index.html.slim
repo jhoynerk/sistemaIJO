@@ -6,13 +6,13 @@ h4 Prestamo de recursos
     = select('order', :beneficiary_id ,Beneficiary.all.collect {|p| [ p.first_name + " " + p.last_name, p.id ] }, { :prompt => 'Seleccione al beneficiario'}, {class: 'chosen-select', required: true})
     = label_tag 'Seleccione los eventos'
   p
-    | Está destinado a: 
+    | Está destinado a:
   p
     input#eventos.with-gap name="typo_beneficio" type="radio" data-panel="eventos_panel" value="1" required="required"
     label for="eventos"  Evento
   p
     input#actividades.with-gap name="typo_beneficio" type="radio" data-panel="actividades_panel" value="2" required="required"
-    label for="actividades"  Actividad  
+    label for="actividades"  Actividad
 
   / PANEL DE EVENTOS
   .field.col.m12#eventos_panel.panel_body
@@ -22,7 +22,7 @@ h4 Prestamo de recursos
         | No
         input type="checkbox" id="is_list_event" name="is_list_event" data-link="events"
         span.lever
-        | Sí  
+        | Sí
     .input-field.hidden#events_list
       = select('order', :events , Event.all.not_beneficiary.collect {|p| [ p.description+ " | " + l(p.date_start, format: :big) + " | Numero de recursos: " + p.resources.count.to_s, p.id ] }, { :prompt => "Seleccione los eventos"}, { :multiple => true, :size => 5 } )
       = label_tag 'Seleccione los eventos'
@@ -53,7 +53,7 @@ h4 Prestamo de recursos
         | No
         input type="checkbox" id="is_list_activities" name="is_list_activities" data-link="activities"
         span.lever
-        | Sí 
+        | Sí
     .input-field.hidden#activities_list
       = select('order', :activities , Activity.all.collect {|p| [ p.description+ " | " + l(p.date_start, format: :big) + " | Numero de recursos: " + p.resources.count.to_s, p.id ] }, { :prompt => "Seleccione las actividades"}, { :multiple => true, :size => 5 } )
       = label_tag 'Seleccione las actividades'
@@ -74,8 +74,8 @@ h4 Prestamo de recursos
         = time_field_tag 'activity[end_time_field]', nil, class: "timepicker"
   .clearfix
   .input-field
-    = link_to 'Back', resources_path, class: 'btn blue lighten-3 left' 
-    = submit_tag('Agregar', class: 'right btn blue') 
+    = link_to 'Regresar', resources_path, class: 'btn blue lighten-3 left'
+    = submit_tag('Agregar', class: 'right btn blue')
   .clearfix
 
 javascript:
@@ -88,7 +88,7 @@ javascript:
     }
     $('.datepicker').pickadate({
       selectMonths: true,
-      selectYears: 15 
+      selectYears: 15
     });
     limpiar_panel()
     $('select').material_select();

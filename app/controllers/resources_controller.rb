@@ -29,7 +29,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to @resource, notice: 'El recurso se ha creado correctamente.' }
+        format.html { redirect_to @resource, notice: 'El recurso se ha creado éxitosamente.' }
         format.json { render :show, status: :created, location: @resource }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ResourcesController < ApplicationController
   def update
     respond_to do |format|
       if @resource.update(resource_params)
-        format.html { redirect_to @resource, notice: 'El recurso se ha editado correctamente.' }
+        format.html { redirect_to @resource, notice: 'El recurso se ha editado éxitosamente.' }
         format.json { render :show, status: :ok, location: @resource }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class ResourcesController < ApplicationController
   def destroy
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to resources_url, notice: 'El recurso se ha eliminado correctamente.' }
+      format.html { redirect_to resources_url, notice: 'El recurso se ha eliminado éxitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -78,7 +78,7 @@ class ResourcesController < ApplicationController
     @resource = TypeResource.new(resource_params)
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to @resource, notice: 'El recurso se ha creado correctamente.' }
+        format.html { redirect_to @resource, notice: 'El recurso se ha creado éxitosamente.' }
         format.json { render :show, status: :created, location: @resource }
       else
         format.html { render :new }
@@ -95,7 +95,7 @@ class ResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params.require(:resource).permit(:code, :name, :description, :capacity, :resource_id, :area_id, 
+      params.require(:resource).permit(:code, :name, :description, :capacity, :resource_id, :area_id,
                                        resources_attributes: [:id, :code, :name, :description, :resource_id, :area_id, :_destroy] )
     end
 end
