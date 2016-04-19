@@ -35,7 +35,7 @@ class AreasController < ApplicationController
     save_multiples_recursos if params[:recursos][:status] == '1'
     respond_to do |format|
       if @area.save
-        format.html { redirect_to areas_path, notice: 'Area was successfully created.' }
+        format.html { redirect_to areas_path, notice: 'El Área fue creada éxitosamente.' }
         format.json { render :show, status: :created, location: @area }
       else
         format.html { render :new }
@@ -49,11 +49,11 @@ class AreasController < ApplicationController
   def update
     if params[:recursos][:status] == '1'
       @count = count_of_resource
-      save_multiples_recursos 
+      save_multiples_recursos
     end
     respond_to do |format|
       if @area.update(area_params)
-        format.html { redirect_to @area, notice: 'Area was successfully updated.' }
+        format.html { redirect_to @area, notice: 'El Área fue modificada éxitosamente.' }
         format.json { render :show, status: :ok, location: @area }
       else
         format.html { render :edit }
@@ -67,7 +67,7 @@ class AreasController < ApplicationController
   def destroy
     @area.destroy
     respond_to do |format|
-      format.html { redirect_to areas_url, notice: 'Area was successfully destroyed.' }
+      format.html { redirect_to areas_url, notice: 'El Área fue eliminada éxitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -85,7 +85,7 @@ class AreasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def area_params
-      params.require(:area).permit(:code, :name, :reservable, :status, :area_id, :institute_id, 
+      params.require(:area).permit(:code, :name, :reservable, :status, :area_id, :institute_id,
                                    resources_attributes: [:id, :code, :name, :description, :movil, :pedagogic, :resource_id, :area_id, :_destroy])
     end
 

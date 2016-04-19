@@ -8,7 +8,7 @@
     = f.select(:area_id, Area.disponible.all.collect {|p| [ p.name, p.id ] }, { include_blank: 'Seleccione un Área' }, {class: 'browser-default chosen-select', required: true})
   p
     = f.label :description, 'Descripción'
-    = f.text_field :description, required: true  
+    = f.text_field :description, required: true
   p
     = f.label :day, 'Día'
     = f.date_field :day, class: "datepicker", value: (@date unless @date.nil? ), required: true
@@ -24,7 +24,7 @@
     = f.collection_select :resource_ids, Resource.disponible, :id, :name, {:selected => @activity.resource_ids, include_blank: true} , class: 'browser-default chosen-select', multiple: 'multiple'
   .clearfix
   p
-    = link_to 'Back', :back, class: 'btn blue lighten-3 left'
+    = link_to 'Regresar', :back, class: 'btn blue lighten-3 left'
     = f.submit('Agregar', class: 'right btn blue')
 .clearfix
 

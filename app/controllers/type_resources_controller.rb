@@ -28,7 +28,7 @@ class TypeResourcesController < ApplicationController
 
     respond_to do |format|
       if @type_resource.save
-        format.html { redirect_to @type_resource, notice: 'Type resource was successfully created.' }
+        format.html { redirect_to @type_resource, notice: 'EL tipo de recurso fue cread éxitosamente.' }
         format.json { render :show, status: :created, location: @type_resource }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TypeResourcesController < ApplicationController
   def update
     respond_to do |format|
       if @type_resource.update(type_resource_params)
-        format.html { redirect_to @type_resource, notice: 'Type resource was successfully updated.' }
+        format.html { redirect_to @type_resource, notice: 'EL tipo de recurso fue modificado éxitosamente.' }
         format.json { render :show, status: :ok, location: @type_resource }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TypeResourcesController < ApplicationController
   def destroy
     @type_resource.destroy
     respond_to do |format|
-      format.html { redirect_to type_resources_url, notice: 'Type resource was successfully destroyed.' }
+      format.html { redirect_to type_resources_url, notice: 'EL tipo de recurso fue eliminado éxitosamente.' }
       format.json { head :no_content }
     end
   end

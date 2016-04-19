@@ -1,15 +1,35 @@
+<h4> <%= @institute.name %> </h4>
 <p>
-  <strong>Código:</strong>
+  <strong>Abreviatura:</strong>
   <%= @institute.code %>
 </p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @institute.name %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Abreviatura</th>
+      <th>Nombre</th>
+      <th></th>
+    </tr>
+  </thead>
+<br>
 
 <p>
-    <%= link_to 'Back', institutes_path, class: 'btn blue lighten-3 left' %>
+    <%= link_to 'Regresar', institutes_path, class: 'btn blue lighten-3 left' %>
     <%= link_to 'Edición', edit_institute_path(@institute), class: 'right btn blue' %>
 </p>
+
+<br> <br> <br>
+<h5> Área(s) asociadas </h5>
+  <tbody>
+    <% @institute.areas.each do |area| %>
+      <tr>
+        <td><%= area.code %></td>
+        <td><%= link_to area.name , area_path%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <div class="clearfix"></div>

@@ -25,12 +25,48 @@ es-VE:
       user: 'Usuario'
 
     attributes:
+      activity:
+        description: 'Descripción'
+        day: 'Fecha'
+        status: 'Estado'
+        time_start: 'Hora inicio'
+        time_end: 'Hora final'
+        area_id: 'Área'
+        activities_resources: 'Recurso'
+      area:
+        code: 'Abreviatura'
+        name: 'Nombre'
+        reservable: 'Reservable'
+        status: 'Estado'
+      beneficiary:
+        first_name: 'Nombre'
+        last_name: 'Apellido'
+        email: 'Correo'
+        position: 'Cargo'
+        phone: 'Teléfono'
+      event:
+        description: 'Descripción'
+        date_start: 'Fecha inicio'
+        date_end: 'Fecha final'
+      incidence:
+        observations: 'Observaciones'
+      institute:
+        code: 'Abreviatura'
+        name: 'Nombre'
+      resource:
+        code: 'Abreviatura'
+        name: 'Nombre'
+        status: 'Estado'
+        movil: 'Movilidad'
+        pedagogic: 'Tipo Recurso'
+      type_activitie:
+        name: 'Tipo de Actividad'
       type_resource:
         name: 'Nombre'
         code: 'Abreviatura'
-      activity:
-        time_start: 'Hora inicio'
-        time_end: 'Hora final'
+      user:
+        email: 'Correo'
+        username: 'Usuario'
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

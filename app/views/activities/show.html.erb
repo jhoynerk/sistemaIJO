@@ -23,7 +23,7 @@
   <%= @activity.event.description if @activity.event.present? %>
 </p>
 <p>
-    <%= link_to 'Back', (:back or activities_path), class: 'btn blue lighten-3 left' %>
+    <%= link_to 'Regresar', (:back or activities_path), class: 'btn blue lighten-3 left' %>
     <%= link_to 'Edición', edit_activity_path(@activity), class: 'right btn blue' %>
 </p>
 <div class="clearfix"></div>

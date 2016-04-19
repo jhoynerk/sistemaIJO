@@ -2,29 +2,29 @@
 = form_for(@resource) do |f|
   .field
     = f.label :code, 'Abreviatura'
-    = f.text_field :code, required: true 
+    = f.text_field :code, required: true
   .field
-    = f.label :name, 'Nombre' 
-    = f.text_field :name, required: true 
+    = f.label :name, 'Nombre'
+    = f.text_field :name, required: true
   .field
-    = f.label :description, 'Descripción' 
+    = f.label :description, 'Descripción'
     = f.text_field :description
   p
     label Tipo de recurso
   p
     = f.radio_button :pedagogic, 'false'
-    = f.label :pedagogic, 'Tecnologico', :value => 'false' 
+    = f.label :pedagogic, 'Tecnologico', :value => 'false'
   p
     = f.radio_button :pedagogic, 'true'
-    = f.label :pedagogic, 'Pedagógico', :value => 'true' 
+    = f.label :pedagogic, 'Pedagógico', :value => 'true'
   p
     label Movilidad del recurso
   p
     = f.radio_button :movil, 'false'
-    = f.label :movil, 'Fijo', :value => 'false' 
+    = f.label :movil, 'Fijo', :value => 'false'
   p
     = f.radio_button :movil, 'true'
-    = f.label :movil, 'Móvil', :value => 'true' 
+    = f.label :movil, 'Móvil', :value => 'true'
   p
     = f.label :area_id, 'Área al que pertenece'
     select name="resource[area_id]" id="resource_area_id" data-link="#{by_recursos_path}" required="required"
@@ -42,8 +42,8 @@
       = link_to_add_association "Agregar recurso asociado<i class='material-icons add right'></i></a>".html_safe, f, :resources, class: "waves-effect waves-light btn green lighten-1"
   .clearfix
   .input-field
-    = link_to 'Back', resources_path, class: 'btn blue lighten-3 left' 
-    = f.submit('Agregar', class: 'right btn blue') 
+    = link_to 'Regresar', resources_path, class: 'btn blue lighten-3 left'
+    = f.submit('Agregar', class: 'right btn blue')
 .clearfix
 
 javascript:
