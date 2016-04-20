@@ -29,7 +29,7 @@ ul.collapsible.popout data-collapsible="accordion"
     .collapsible-body
       = month_calendar events: @activities  do |date, meetings|
         = date.strftime("%e")
-        = link_to "<i class='material-icons add very-small'></i>".html_safe, root_path
+        = link_to "<i class='material-icons add very-small'></i>".html_safe, new_activity_path(date: date)
         - @activities.each do |e|
           - if (e.day.to_date == date.to_date)
             .col.s12.m10.offset-m1.center.chip.deep-orange.lighten-3

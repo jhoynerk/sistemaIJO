@@ -32,4 +32,8 @@ recurso6 = Resource.create(code: '00007', name: 'Impresora', description: '', ar
   Resource.create(code: "EQP#{e}", name: 'Computadora', description: 'Fecha del equipo 2014', area: area1)
 end
 
+Beneficiary.create(first_name: 'Prizni',last_name: 'Marquez',email: 'prizni@gmail.com',position: 'Profesora',phone: '555-55-55')
+Beneficiary.create(first_name: 'José',last_name: 'Vargas',email: 'jose@gmail.com',position: 'Coordinador',phone: '555-55-55')
+Beneficiary.create(first_name: 'Pedro',last_name: 'Salazar',email: 'pedro@gmail.com',position: 'Profesor',phone: '555-55-55')
+Beneficiary.create(first_name: 'Daniel',last_name: 'Hernández',email: 'daniel@gmail.com',position: 'Capacitador',phone: '555-55-55')
 p 'Fin seed'

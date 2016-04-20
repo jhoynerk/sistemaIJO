@@ -4,3 +4,10 @@ en:
       available: "Available"
       maintenance: "Maintenance"
       disjointed: "Disjointed"
+
+es-VE:
+  enumerations:
+    resource_status:
+      available: "Disponible"
+      maintenance: "Mantenimiento"
+      disjointed: "Desarticulado"

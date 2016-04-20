@@ -5,3 +5,11 @@ en:
       current: "Current"
       done: "Done"
       suspended: "Suspended"
+
+es-VE:
+  enumerations:
+    activity_status:
+      pending: "Pendiente"
+      current: "Proceso"
+      done: "Realizada"
+      suspended: "Suspendida"
