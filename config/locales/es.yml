@@ -67,6 +67,8 @@ es-VE:
       user:
         email: 'Correo'
         username: 'Usuario'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación de contraseña'
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

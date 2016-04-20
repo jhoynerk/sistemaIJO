@@ -86,3 +86,7 @@ nav a.button-collapse{
 .toast-message{
   word-break: normal!important;
 }
+
+.input-field .prefix ~ input,{
+  margin-left: 3rem;
+}

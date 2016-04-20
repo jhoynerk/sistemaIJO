@@ -44,6 +44,8 @@ gem 'enumerate_it'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 # timepicker
 gem 'jquery-timepicker-rails'
+# validation
+gem "jquery-validation-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

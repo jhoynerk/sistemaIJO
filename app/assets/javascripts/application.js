@@ -21,6 +21,8 @@
 //= require chosen-jquery
 //= require notifications.js
 //= require jquery.timepicker.js
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 
 var setupDashboardPage = function() {
   $(".button-collapse").sideNav({
