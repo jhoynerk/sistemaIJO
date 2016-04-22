@@ -1,0 +1,46 @@
+h4 
+  | Listado de Eventos
+  a.modal-trigger.btn-floating.btn-large.waves-effect.blue.waves-light.btn.right.separate href="#modal1" = fa_icon "print"
+  = link_to "<i class='material-icons add'></i>".html_safe, new_event_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
+table.tables
+  thead
+    tr
+      th Descripción
+      th Fecha de Inicio
+      th Fecha de Culminación
+      th 
+  tbody
+    - @events.each do |event|
+      tr
+        td = event.description
+        td = l(event.activities.first.day, format: :long)
+        td = l(event.activities.last.day, format: :long)
+        td
+          = link_to "<i class='material-icons search'></i>".html_safe, event , class: 'btn btn-floating blue'
+          |         
+          = link_to "<i class='material-icons create'></i>".html_safe, edit_event_path(event), class: 'btn btn-floating yellow accent-4'
+          |         
+          = link_to "<i class='material-icons delete'></i>".html_safe, event, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red'
+
+
+#modal1.modal.modal-fixed-footer
+  .modal-content
+    h4 Listado de eventos
+    table.datatable.tables#printer
+      thead
+        tr
+          th Descripción
+          th Fecha de Inicio
+          th Fecha de Culminación
+      tbody
+        - @events.each do |event|
+          tr
+            td = event.description
+            td
+            td
+  .modal-footer
+    a.modal-action.waves-effect.waves-green.btn-flat#print href="#!" Imprimir
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left href="#!" Cerrar
+
+- content_for :javascript
+  = javascript_include_tag 'tables'

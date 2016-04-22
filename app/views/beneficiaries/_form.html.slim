@@ -1,0 +1,37 @@
+= custom_errors(@beneficiary.errors)
+= form_for(@beneficiary) do |f|
+  .field
+    = f.label :cedula, 'Cedula (V-XXXXXXXX)'
+    = f.text_field :cedula, required: true
+  .field
+    = f.label :first_name, 'Nombre'
+    = f.text_field :first_name, required: true
+  .field
+    = f.label :last_name, 'Apellido'
+    = f.text_field :last_name, required: true
+  .field
+    = f.label :position, 'Cargo'
+    = f.text_field :position, required: true
+  .field
+    = f.label :phone, 'Teléfono'
+    = f.text_field :phone, required: true
+  .input-field
+    = link_to 'Regresar', beneficiaries_path, class: 'btn blue lighten-3 left'
+    = f.submit('Guardar', class: 'right btn blue')
+  .clearfix
+
+javascript:
+  $(document).ready(function(){
+    $("#new_beneficiary").validate({
+      rules: {
+        'beneficiary[phone]': {
+          required: true,
+          telefono: true
+        },
+        'beneficiary[cedula]':{
+          RIF: true,
+          required: true
+        }
+      }
+    });
+  });

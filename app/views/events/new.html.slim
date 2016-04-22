@@ -1,3 +1,6 @@
+h4 Nuevo Evento
+
+
 = custom_errors(@event.errors)
 = form_for(@event) do |f|
   p
@@ -23,8 +26,9 @@
       = link_to_add_association "Agregar actividad por periodo<i class='material-icons add right'></i></a>".html_safe, f, :activities, class: "waves-effect waves-light btn green lighten-1", partial: 'events/activities_resource_fields'
   .input-field
     = link_to 'Regresar', events_path, class: 'btn blue lighten-3 left'
-    = f.submit('Guardar', class: 'right btn blue')
+    = f.submit('Agregar', class: 'right btn blue')
   .clearfix
 
 javascript:
    $('.chosen-select').chosen();
+

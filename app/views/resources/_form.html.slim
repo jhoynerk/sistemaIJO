@@ -43,12 +43,12 @@
   .clearfix
   .input-field
     = link_to 'Regresar', resources_path, class: 'btn blue lighten-3 left'
-    = f.submit('Agregar', class: 'right btn blue')
+    = f.submit('Guardar', class: 'right btn blue')
 .clearfix
 
 javascript:
   $(document).ready(function() {
-    $('select').material_select();
+    $('#resource_area_id').material_select();
     $('#resource_area_id').change(function() {
         $.ajax({
            url: $(this).data('link'), // this will be routed
@@ -67,7 +67,7 @@ javascript:
             if (data.length != 0){
               for(var i in data){
                 var id = data[i].id;
-                var title = data[i].name;
+                var title = data[i].code+' '+data[i].name;
                 $("#resource_resource_id").append(new Option(title, id));
               }
             }

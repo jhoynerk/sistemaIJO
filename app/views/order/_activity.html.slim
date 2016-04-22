@@ -1,0 +1,47 @@
+= custom_errors(@activity.errors)
+.col.s12.m6
+  .card.white
+    = form_tag( orden_created_path, method: "post") do
+      .card-content.black-text
+        span.card-title 
+          strong = activity.description
+        p.black-text
+          = l( (activity.day), format: :long).capitalize
+          |  de 
+          = l((activity.time_start.to_time), format: :short)
+          |  a 
+          = l((activity.time_end.to_time), format: :short)
+        p.black-text
+          strong Área: 
+          = " #{activity.area.name}"
+        .input-field.black-text
+          strong
+            = label_tag :status, 'Estado de la actividad', class:'black-text'
+          br
+          br
+          = select('order', :status ,ActivityStatus.to_a, { :prompt => 'Seleccione el estado de la actividad', selected: activity.status}, {class: '', required: true})
+        p
+          strong
+            = label_tag :observations, 'Observaciones del área', class:'black-text'
+          = text_field_tag 'order[observations]', (activity.incidence.observations if activity.incidence.present?), class:'black-text'
+          = hidden_field_tag 'order[activity_id]', activity.id
+        - if activity.resources.any?
+          p 
+            strong
+              = label_tag "recursos", 'Recursos usados', class:'black-text'
+            - activity.resources.each do |resource|
+              - hex = (0...8).map { ('a'..'z').to_a[rand(26)] }.join
+              .card-panel
+                = hidden_field_tag "order[resources][#{hex}][id]", resource.id
+                p  = label_tag :status, "Estado del recurso #{resource.name}", class:'black-text'
+                p = select('order', "[resources][#{hex}][status]" ,ResourceStatus.to_a, { :prompt => 'Seleccione el estado del recurso', selected: resource.status}, {class: '', required: true})
+                p
+                  strong
+                    = label_tag :observations, "Observaciones del recurso #{resource.name}", class:'black-text'
+                p = text_field_tag "order[resources][#{hex}][observations]", '', class:'black-text'
+      .card-action
+        = submit_tag('Actualizar', class: 'btn blue')
+javascript:
+  $(document).ready(function() {
+    $('select').material_select();
+  });

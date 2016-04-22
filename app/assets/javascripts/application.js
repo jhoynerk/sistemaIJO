@@ -23,6 +23,8 @@
 //= require jquery.timepicker.js
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require jquery.printelement.js
+//= require validate/localization/messages_es.js
 
 var setupDashboardPage = function() {
   $(".button-collapse").sideNav({
@@ -42,9 +44,26 @@ var setupDashboardPage = function() {
     closeOnClear: true,
     closeOnSelect: true
   });
+  $('.modal-trigger').leanModal();
+  $('#print').on('click', function(){
+    $('#printer').printElement();
+  });
 
   //$('select').material_select();
   $("select[required]").css({display: "inline", height: 0, padding: 0, width: 0});
 };
 
 $(document).on('page:load ready', setupDashboardPage);
+
+$(function(){
+  $.validator.setDefaults({
+      errorClass: 'invalid'
+  });
+  $.validator.addMethod("RIF", function(value, element) {
+    return this.optional(element) || /^([V|E|G|J|P|N]{1}-\d{7,10})*$/i.test(value);
+  }, "El RIF o Cédula es inválido: Por favor ingresa uno válido. Formato: V-XXXXXXX");
+
+  $.validator.addMethod("telefono", function(value, element) {
+    return this.optional(element) || /^0(412|416|414|424|426|212)-\d{7}$/i.test(value);
+  }, "El teléfono es inválido: Por favor ingresa uno válido. Format: 0212-0123456");
+});

@@ -1,10 +1,10 @@
 class Resource < ActiveRecord::Base
   has_enumeration_for :status, with: ResourceStatus, create_scopes: true, create_helpers: true
   
-  validates :name, :code, :description, presence: true, on: :create
+  validates :name, :code, presence: true, on: :create
   
   has_many :resources, dependent: :delete_all
-  
+  has_many :incidences, dependent: :delete_all
   belongs_to :resource
   belongs_to :type_resource
   belongs_to :area
@@ -30,6 +30,12 @@ class Resource < ActiveRecord::Base
   scope :fijo, -> { where(movil: false) }
 
   scope :disponible, -> { available.movil }
+
+  before_save :up_case_code
+  
+  def up_case_code
+    code.upcase!
+  end
 
   def normalize_code
     self.code = "#{area.code}-#{self.code}"

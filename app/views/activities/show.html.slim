@@ -1,0 +1,40 @@
+h4 = @activity.description
+p
+  strong Descripción:
+  = " #{@activity.description}"
+p
+  strong Fecha:
+  = " #{l(@activity.day, format: :long) }"
+p
+  strong Horario:
+  = " #{@activity.inicio} "
+  | hasta 
+  = " #{@activity.fin}"
+p
+  strong Área en que se realizara:
+  = " #{@activity.area.name}"
+- if @activity.resources.any?
+  table
+    thead
+      tr
+        th Se solicitaron esto(s) recurso(s)
+    tbody
+      - @activity.resources.each do |r|
+        tr
+          td = r.name
+p
+  = link_to 'Regresar', activities_path, class: 'btn blue lighten-3 left' 
+  = link_to 'Edición', edit_activity_path(@activity), class: 'right btn blue' 
+br
+br
+h5 Incidencias(s) asociados
+table
+  thead
+    tr
+      th Observaciones
+  tbody
+    - if @activity.incidence.present?
+      tr
+        td = @activity.incidence.observations
+.clearfix
+

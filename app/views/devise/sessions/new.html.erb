@@ -5,29 +5,35 @@
         <div class="row">
           <div class="input-field col s12 center">
             <%= image_tag 'logo.png', id: 'logo-ijo', class:'responsive-img valign profile-image-login col s12'%>
-            <p class="center login-form-text">Bienvenidos</p>
+            <p class="center login-form-text">
+              Bienvenidos
+              </br></br>
+              <strong> <%= "Sistema de gestiÓn de recursos".upcase %>
+              </br>
+              Instituto Jesús Obrero </strong>
+            </p>
+            <p class="center login-form-text"></p>
           </div>
         </div>
-        <div class="row margin">
+        
+        <div class="row">
           <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix"></i>
             <%= f.text_field :username, autofocus: true %>
             <%= f.label :username%>
           </div>
         </div>
-        <div class="row margin">
+        <div class="row">
           <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
             <%= f.password_field :password, autocomplete: "off" %>
             <%= f.label :password %><br />
           </div>
         </div>
-        <div class="row margin">
+        <!-- <div class="row margin">
           <div class="input-field col s12">
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
           </div>
-        </div>
+        </div> -->
         <div class="row">
           <div class="input-field col s6 offset-s3">
             <%= f.submit "Iniciar Sesión", class:'btn waves-effect waves-light col s12' %> 

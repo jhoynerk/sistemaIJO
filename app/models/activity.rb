@@ -5,6 +5,7 @@ class Activity < ActiveRecord::Base
   belongs_to :area
   has_and_belongs_to_many :resources
   #accepts_nested_attributes_for :activities_resources
+  has_one :incidence
 
   validates :description, :beneficiary_id, :day, :time_start, :time_end, :area_id, presence: true
   validate :end_time_greater_start_time, :calendar_available_area, :calendar_available_resource
@@ -39,6 +40,15 @@ class Activity < ActiveRecord::Base
        day)
   }
 
+  scope :date_expired, -> { where('day <= ?', Date.today) }
+
+  scope :pendings, -> { where(status: ActivityStatus::PENDING) }
+  scope :process, -> { where(status: ActivityStatus::CURRENT) }
+  scope :done, -> { where(status: ActivityStatus::DONE) }
+  scope :suspended, -> { where(status: ActivityStatus::SUSPENDED) }
+
+  scope :pendings_and_process, -> { where('status = ? or status = ?', ActivityStatus::PENDING, ActivityStatus::CURRENT) }
+
   def opening_time
     self.time_start.to_time.strftime('%I:%M%P') if self.time_start.present?
   end
@@ -53,6 +63,14 @@ class Activity < ActiveRecord::Base
 
   def end_time
     self.time_end
+  end
+
+  def inicio
+    time_start.to_datetime.hour_minutes
+  end
+
+  def fin
+    time_end.to_datetime.hour_minutes
   end
 
   scope :not_id, -> (id) { where('id != ?', id) }

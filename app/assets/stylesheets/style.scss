@@ -91,6 +91,7 @@ nav a.button-collapse{
   margin-left: 3rem;
 }
 
+
 .simple-calendar .day {
   width: 90px!important;
 }
@@ -98,4 +99,20 @@ nav a.button-collapse{
 .collapsible-body p {
     margin: 0;
     padding: 0.5rem;
+}
+.dataTables_length{
+  width: 100px;
+  float: left;
+}
+
+.title_style{
+  line-height: 50px;
+}
+
+.day p {
+ padding: 2px!important;
+}
+
+.separate{
+  margin-left: 5px;
 }

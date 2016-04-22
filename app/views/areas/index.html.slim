@@ -1,29 +1,54 @@
 h4
   | Listado de Areas
+  a.modal-trigger.btn-floating.btn-large.waves-effect.blue.waves-light.btn.right.separate href="#modal1" = fa_icon "print"
   = link_to "<i class='material-icons add'></i>".html_safe, new_area_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
-table#datatable.tables
+table.datatable.tables
   thead
     tr
       th Abreviatura
       th Nombre
       th Instituto
+      th N° de recursos
+      th N° de actividades
       th
   tbody
     - @areas.each do |area|
       tr
         td = area.code
         td = area.name
-        td = area.institute.name if area.institute.present?
+        td = link_to area.institute.name, area.institute if area.institute.present?
+        td = area.resources.count
+        td = area.activities.count
         td
           = link_to "<i class='material-icons perm_contact_calendar'></i>".html_safe, area_calendar_path(area) , class: 'btn btn-floating green'
+          |        
           = link_to "<i class='material-icons search'></i>".html_safe, area , class: 'btn btn-floating blue'
+          |        
           = link_to "<i class='material-icons create'></i>".html_safe, edit_area_path(area), class: 'btn btn-floating yellow accent-4'
+          |        
           = link_to "<i class='material-icons delete'></i>".html_safe, area, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red'
+
+#modal1.modal.modal-fixed-footer
+  .modal-content
+    h4 Listado de Areas
+    table.datatable.tables#printer
+      thead
+        tr
+          th Abreviatura
+          th Nombre
+          th Instituto
+      tbody
+        - @areas.each do |area|
+          tr
+            td = area.code
+            td = area.name
+            td = area.institute.name if area.institute.present?
+  .modal-footer
+    a.modal-action.waves-effect.waves-green.btn-flat#print href="#!" Imprimir
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left href="#!" Cerrar
+
 
 - content_for :javascript
   = javascript_include_tag 'tables'
 
-javascript:
-  $(document).ready(function(){
-    $('select').addClass('browser-default');
-  });
+

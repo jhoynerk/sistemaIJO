@@ -11,6 +11,19 @@ module ApplicationHelper
     "#{clase}" if request.fullpath == link
   end
 
+  def class_tr(status)
+    case status
+    when 0
+      'yellow lighten-5'
+    when 1
+      'blue lighten-5'
+    when 2
+      'green lighten-5'
+    when 3
+      'red lighten-5'
+    end
+  end
+
   def custom_bootstrap_flash
     flash_messages = []
     flash.each do |type, message|

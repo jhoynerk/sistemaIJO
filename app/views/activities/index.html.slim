@@ -1,7 +1,8 @@
 h4 
   | Listado de Actividades
+  a.modal-trigger.btn-floating.btn-large.waves-effect.blue.waves-light.btn.right.separate href="#modal1" = fa_icon "print"
   = link_to "<i class='material-icons add'></i>".html_safe, new_activity_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
-table#datatable
+table.datatable.tables
   thead
     tr
       th Descripción
@@ -17,19 +18,42 @@ table#datatable
       tr
         td = activity.description
         td = activity.area.name
-        td = l(activity.day, format: :default)
+        td = l(activity.day, format: :order)
         td = l(activity.time_start, format: :long)
         td = l(activity.time_end, format: :long)
         td = activity.event.description if activity.event.present?
         td
           = link_to "<i class='material-icons search'></i>".html_safe, activity , class: 'btn btn-floating blue'
+          |          
           = link_to "<i class='material-icons create'></i>".html_safe, edit_activity_path(activity), class: 'btn btn-floating yellow accent-4'
+          |          
           = link_to "<i class='material-icons delete'></i>".html_safe, activity, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red'
+
+#modal1.modal.modal-fixed-footer
+  .modal-content
+    h4 Listado de actividades
+    table.datatable.tables#printer
+      thead
+        tr
+          th Descripción
+          th Área
+          th Day
+          th Hora de Inicio
+          th Hora de Culminación
+          th Evento
+
+      tbody
+        - @activities.each do |activity|
+          tr
+            td = activity.description
+            td = activity.area.name
+            td = l(activity.day, format: :order)
+            td = l(activity.time_start, format: :long)
+            td = l(activity.time_end, format: :long)
+            td = activity.event.description if activity.event.present?
+  .modal-footer
+    a.modal-action.waves-effect.waves-green.btn-flat#print href="#!" Imprimir
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left href="#!" Cerrar
 
 - content_for :javascript
   = javascript_include_tag 'tables'
-
-javascript:
-  $(document).ready(function(){
-    $('select').addClass('browser-default');
-  });

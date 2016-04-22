@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   #include JqueryValidate
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :can_access
 
   def index
     @users = User.all
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'El usuario #{@user.email} fue creado con éxito!' }
+        format.html { redirect_to @user, notice: "El usuario #{@user.email} fue creado con éxito!" }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       @user_params = ( params[:user][:password].empty? ) ? user_params_whitnot_password : user_params
       if @user.update(@user_params)
-        format.html { redirect_to @user, notice: 'El Tipo de Licencia se ha actualizado correctamente!' }
+        format.html { redirect_to @user, notice: 'El usuario se ha actualizado correctamente!' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -44,8 +45,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.status = 0
-    @user.save!
+    @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
