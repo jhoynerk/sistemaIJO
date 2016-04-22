@@ -1,6 +1,6 @@
 
 var load_table = function() {
-  $('#datatable').DataTable({
+  $('.tables').DataTable({
     language: { 
               "sProcessing":     "Procesando...",
               "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -26,6 +26,10 @@ var load_table = function() {
               } 
     },
     paging: true
+  });
+
+  $.each($('.dataTables_length select'), function( index, value){
+    $(value).addClass('browser-default left');
   });
 }
 

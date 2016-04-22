@@ -1,0 +1,58 @@
+h4
+  | Listado de Beneficiarios
+  a.modal-trigger.btn-floating.btn-large.waves-effect.blue.waves-light.btn.right.separate href="#modal1" = fa_icon "print"
+  = link_to "<i class='material-icons add'></i>".html_safe, new_beneficiary_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
+table.datatable.tables
+  thead
+    tr
+      th Cedula
+      th Nombre
+      th Apellido
+      th Puesto
+      th Teléfono
+      th N° de actividades
+      th
+  tbody
+    - @beneficiaries.each do |beneficiary|
+      tr
+        td = beneficiary.cedula
+        td = beneficiary.first_name
+        td = beneficiary.last_name
+        td = beneficiary.position
+        td = beneficiary.phone
+        td = beneficiary.activities.count
+        td
+          = link_to "<i class='material-icons search'></i>".html_safe, beneficiary , class: 'btn btn-floating blue'
+          |        
+          = link_to "<i class='material-icons create'></i>".html_safe, edit_beneficiary_path(beneficiary), class: 'btn btn-floating yellow accent-4'
+          |        
+          = link_to "<i class='material-icons delete'></i>".html_safe, beneficiary, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red'
+
+#modal1.modal.modal-fixed-footer
+  .modal-content
+    h4 Listado de Areas
+    table.datatable.tables#printer
+      thead
+        tr
+          th Cedula
+          th Nombre
+          th Apellido
+          th Puesto
+          th Teléfono
+          th N° de actividades
+      tbody
+        - @beneficiaries.each do |beneficiary|
+          tr
+            td = beneficiary.cedula
+            td = beneficiary.first_name
+            td = beneficiary.last_name
+            td = beneficiary.position
+            td = beneficiary.phone
+            td = beneficiary.activities.count
+  .modal-footer
+    a.modal-action.waves-effect.waves-green.btn-flat#print href="#!" Imprimir
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left href="#!" Cerrar
+
+
+- content_for :javascript
+  = javascript_include_tag 'tables'

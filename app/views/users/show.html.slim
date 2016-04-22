@@ -1,9 +1,6 @@
 p
   strong Username:
   = " #{@user.username}"
-p
-  strong Email:
-  = " #{@user.email}"
 
 
 = link_to 'Edición', edit_user_path(@user), class: 'right btn blue'

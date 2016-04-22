@@ -4,4 +4,9 @@ class LandingPageController < ApplicationController
     @events = Event.all
     @activities = Activity.all
   end
+
+  def mensual
+    @events = Event.all
+    @activities = Activity.all
+  end
 end

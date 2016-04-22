@@ -1,12 +1,12 @@
 .nested-fields
-  .col.m6.s12
+  .col.m6.s12.card
     p
       .col.m12
         = label_tag 'Rango de Fechas'
       .col.m6
-        = text_field_tag 'activity[date_start]', '', class: "datepicker", required: true
+        = text_field_tag 'activity[date_start]', '', class: "datepicker activity_date_start", required: true
       .col.m6
-        = text_field_tag 'activity[date_end]', '', class: "datepicker", required: true
+        = text_field_tag 'activity[date_end]', '', class: "datepicker activity_date_end", required: true
     p
       = label_tag 'activity[days]', "Los días:"
       - Date::DAYNAMES.each_with_index do |day, key|
@@ -15,7 +15,7 @@
           .switch
             label
               | No
-              = check_box_tag 'activity[days][]', key + 1 
+              = check_box_tag 'activity[days][]', key + 1, false, class: 'activities_days'
               span.lever
               | Si
     p
@@ -28,16 +28,38 @@
     .clearfix
     p
       = link_to_remove_association "Quitar recurso<i class='material-icons remove right'></i></a>".html_safe, f, class: "waves-effect waves-light btn red lighten-1"
+    .clearfix
 
 javascript:
   $(document).ready(function(){
+    hex = ((1<<24)*Math.random()|0).toString(16)
+    document.getElementById('activity_date_start').setAttribute("name",'activity['+hex+'][date_start]')
+    document.getElementById('activity_date_start').id = 'activity_'+hex+'_date_start';
+    
+    document.getElementById('activity_date_end').setAttribute("name",'activity['+hex+'][date_end]')
+    document.getElementById('activity_date_end').id = 'activity_'+hex+'_date_end';
+    
+    document.getElementById('activity_time_start').setAttribute("name",'activity['+hex+'][time_start]')
+    document.getElementById('activity_time_start').id = 'activity_'+hex+'_time_start';
+    
+    document.getElementById('activity_time_end').setAttribute("name",'activity['+hex+'][time_end]')
+    document.getElementById('activity_time_end').id = 'activity_'+hex+'_time_end';
+
+    $.each( $('.activities_days'),function (k , v){
+      $(this).removeClass('activities_days')
+      $(v).attr("name", 'activity['+hex+'][days][]');
+      $(v).attr("id", 'activity_'+hex+'_days_');
+    })
+    //document.getElementById('activity_days').setAttribute("name",)
+    //document.getElementById('activity_days').id = ;
+
     $('.chosen-select').chosen();
     $('.timepicker').timepicker({ 
       'timeFormat': 'h:i A',
       'minTime': '7:00am',
       'maxTime': '7:30pm'
     });
-    $('#activity_date_start').pickadate({
+    $('.activity_date_start').pickadate({
       selectMonths: true,
       selectYears: 15,
       min: new Date(),
@@ -45,8 +67,8 @@ javascript:
       closeOnSelect: true
     });
 
-    $('#activity_date_start').on('change', function(){
-      $('#activity_date_end').pickadate({
+    $('.activity_date_start').on('change', function(){
+      $('.activity_date_end').pickadate({
         selectMonths: true,
         selectYears: 15,
         min: new Date($(this).val()),

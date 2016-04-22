@@ -1,11 +1,8 @@
 = custom_errors(@user.errors)
-= simple_form_for(@user) do |f|
+= form_for(@user) do |f|
   p
     = f.label :username, 'Usuario'
     = f.text_field :username, required: true
-  p
-    = f.label :email, 'Email'
-    = f.email_field :email, required: true
   p
     = f.label :password, 'Contraseña'
     = f.password_field :password
@@ -13,17 +10,24 @@
     = f.label :password_confirmation, 'Confirmación de contraseña'
     = f.password_field :password_confirmation
   p
+    = f.label :admin, 'Administrador'
+    .switch
+      label
+        | No
+        = f.check_box :admin
+        span.lever
+        | Si
+  p
     = link_to 'Regresar', users_path, class: 'btn blue lighten-3 left'
-    = f.submit('Agregar', class: 'right btn blue')
+    = f.submit('Guardar', class: 'right btn blue')
 .clearfix
 
 javascript:
   $(document).ready(function(){
-    $(".form-user").validate({
+    $("#new_user").validate({
       rules: {
-        'user[email]': {
-          required: true,
-          email: true
+        'user[username]': {
+          required: true
         },
         'user[password]': {
           minlength: 8

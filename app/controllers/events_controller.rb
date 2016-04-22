@@ -83,15 +83,31 @@ class EventsController < ApplicationController
     end
 
     def setter_multiple_activities
-      @event.date_start = params[:activity][:date_start].to_datetime
-      @event.date_end = params[:activity][:date_end].to_datetime
-      (@event.date_start..@event.date_end).each do |f|
-        params[:activity][:days].each do |d|
-          puts 'pasa por aqui'*3
-          if d.to_i == f.wday
-            puts 'entra aqui puts'*4
-            @event.activities.build(beneficiary_id: @event.beneficiary_id, area_id: @event.area_id, description: @event.description, day: f, time_start: params[:activity][:time_start].to_time, time_end: params[:activity][:time_end].to_time)
+      params[:activity].each do |key, calendar|
+        setter_calendar(calendar)
+        (calendar[:date_start].to_datetime..calendar[:date_end].to_datetime).each do |f|
+          calendar[:days].each do |d|
+            if d.to_i == f.wday
+              @event.activities.build(beneficiary_id: @event.beneficiary_id, area_id: @event.area_id, description: @event.description, day: f, time_start: calendar[:time_start].to_time, time_end: calendar[:time_end].to_time)
+            end
           end
+        end
+      end
+    end
+
+    def setter_calendar(calendar)
+      if @event.date_start.nil?
+        @event.date_start = calendar[:date_start].to_datetime
+      else
+        if @event.date_start.to_datetime > calendar[:date_start].to_datetime
+          @event.date_start = calendar[:date_start].to_datetime
+        end
+      end
+      if @event.date_end.nil?
+        @event.date_end = calendar[:date_end].to_datetime
+      else
+        if @event.date_end.to_datetime > calendar[:date_end].to_datetime
+          @event.date_end = calendar[:date_end].to_datetime
         end
       end
     end

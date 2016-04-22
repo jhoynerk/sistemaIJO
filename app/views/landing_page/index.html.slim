@@ -1,3 +1,7 @@
+= link_to "#{fa_icon('calendar')} Mensual".html_safe, mensual_path, class: 'btn blue lighten-3 left'
+= link_to "#{fa_icon('calendar')} Semanal".html_safe, root_path,  class: 'btn blue lighten-3 left'
+.clearfix
+
 ul.collapsible.popout data-collapsible="accordion" 
   li
     .collapsible-header.active
@@ -15,26 +19,10 @@ ul.collapsible.popout data-collapsible="accordion"
             - s = e.time_start.strftime('%I:%M%P')
             - n = e.time_end.strftime('%I:%M%P')
             - if (e.day.to_date == date.to_date && ( ( h == s or h == n ) or ( h > s and h < n ) ))
-              .col.s12.m10.offset-m1.center.chip.light-green.lighten-3
+              .col.s12.m12.center.chip.light-green.lighten-3
                 = e.area.code
                 | | 
-                = link_to truncate(e.description, length: 15), e
+                = link_to truncate(e.description, length: 8), e
           - hour = hour + 30.minutes
           .clearfix
           hr
-  li
-    .collapsible-header
-      i.material-icons> place
-      | Mensual
-    .collapsible-body
-      = month_calendar events: @activities  do |date, meetings|
-        = date.strftime("%e")
-        = link_to "<i class='material-icons add very-small'></i>".html_safe, new_activity_path(date: date)
-        - @activities.each do |e|
-          - if (e.day.to_date == date.to_date)
-            .col.s12.m10.offset-m1.center.chip.deep-orange.lighten-3
-              = link_to truncate(e.description, length: 15), e 
-
-
-
-

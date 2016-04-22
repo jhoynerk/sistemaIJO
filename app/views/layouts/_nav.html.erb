@@ -4,7 +4,13 @@
     <a href="#" data-activates="slide-out" class="button-collapse">
       <%= fa_icon "bars" %>
     </a>
+    <a href="#" class="brand-logo center hide-on-med-and-down title_style">
+      SISTEMA DE GESTIÓN DE RECURSOS <br>
+      <small>Instituto Jesús Obrero</small>
+    </a>
+    
     <ul class="right hide-on-med-and-down">
+      <li>Bienvenido <%= current_user.username.capitalize %></li>
       <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
     </ul>
     <ul id="slide-out" class="side-nav">

@@ -1,15 +1,16 @@
 h4
   | Listado tipo de recursos
+  a.modal-trigger.btn-floating.btn-large.waves-effect.blue.waves-light.btn.right.separate href="#modal1" = fa_icon "print"
   = link_to "<i class='material-icons add'></i>".html_safe, new_type_resource_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
 
-table
+table.tables
   thead
     tr
       th Abreviatura
       th Nombre
       th Tipo
       th Movilidad
-      th colspan="3"
+      th 
   tbody
     - @type_resources.each do |type_resource|
       tr
@@ -27,7 +28,40 @@ table
             | Fijo
         td
           = link_to "<i class='material-icons search'></i>".html_safe, type_resource , class: 'btn btn-floating blue'
-        td
+          |                 
           = link_to "<i class='material-icons create'></i>".html_safe, edit_type_resource_path(type_resource), class: 'btn btn-floating yellow accent-4'
-        td
+          |                 
           = link_to "<i class='material-icons delete'></i>".html_safe, type_resource, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red'
+
+#modal1.modal.modal-fixed-footer
+  .modal-content
+    h4 Listado de tipo de recursos
+    table.tables#printer
+      thead
+        tr
+          th Abreviatura
+          th Nombre
+          th Tipo
+          th Movilidad
+      tbody
+        - @type_resources.each do |type_resource|
+          tr
+            td = type_resource.code 
+            td = type_resource.name 
+            td 
+              - if type_resource.pedagogic 
+                | Pedagógico
+              - else
+                | Tecnologico
+            td 
+              - if type_resource.movil
+                | Móvil
+              - else
+                | Fijo
+  .modal-footer
+    a.modal-action.waves-effect.waves-green.btn-flat#print href="#!" Imprimir
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left href="#!" Cerrar
+
+
+- content_for :javascript
+  = javascript_include_tag 'tables'

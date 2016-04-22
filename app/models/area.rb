@@ -16,4 +16,19 @@ class Area < ActiveRecord::Base
   scope :reservable, -> { where(reservable: true) }
 
   scope :disponible, -> { reservable.available }
+
+  before_save :up_case_code
+  before_create :normalize_code
+
+  validates :name, :code, :institute_id, presence: true
+  validates :code, :uniqueness => { :case_sensitive => false }
+
+  
+  def normalize_code
+    self.code = "#{institute.code}-#{self.code}" if institute.present?
+  end
+  
+  def up_case_code
+    code.upcase!
+  end
 end

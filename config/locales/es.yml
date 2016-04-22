@@ -38,6 +38,7 @@ es-VE:
         name: 'Nombre'
         reservable: 'Reservable'
         status: 'Estado'
+        institute_id: 'Instituto'
       beneficiary:
         first_name: 'Nombre'
         last_name: 'Apellido'
@@ -48,6 +49,7 @@ es-VE:
         description: 'Descripción'
         date_start: 'Fecha inicio'
         date_end: 'Fecha final'
+        activities: 'Actividades'
       incidence:
         observations: 'Observaciones'
       institute:
@@ -108,6 +110,7 @@ es-VE:
     - sábado
     formats:
       default: "%d/%m/%Y"
+      order: "%Y/%m/%d"
       long: "%A, %d de %B de %Y"
       short: "%d de %b"
       big: '%A, %d %B %Y a las %H:%M'

@@ -6,6 +6,7 @@ class CreateBeneficiaries < ActiveRecord::Migration
       t.string :email
       t.string :position
       t.string :phone
+      t.string :cedula
 
       t.timestamps null: false
     end

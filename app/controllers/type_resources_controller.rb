@@ -1,5 +1,6 @@
 class TypeResourcesController < ApplicationController
   before_action :set_type_resource, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /type_resources
   # GET /type_resources.json

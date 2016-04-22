@@ -62,6 +62,44 @@
         <% end %>
       </tr>
     <% end %>
+    <% unless @area.resources.any? %>
+      <tr>
+        <td class="center-align" colspan="5">No hay recursos</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h5> Actividade(s) asociados </h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>Actividad</th>
+      <th>Fecha</th>
+      <th>Inicio</th>
+      <th>Final</th>
+      <th>Estado</th>
+      <th>Observaciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @area.activities.each do |activity| %>
+      <tr class="<%= class_tr(activity.status) %>">
+        <td><%= activity.description %></td>
+        <td><%= l(activity.day, format: :long)%></td>
+        <td><%= activity.inicio %></td>
+        <td><%= activity.fin %></td>
+        <td><%= activity.status_humanize %></td>
+        <td><%= activity.incidence.observations if activity.incidence.present? %></td>
+      </tr>
+    <% end %>
+    <% unless @area.activities.any? %>
+      <tr>
+        <td class="center-align" colspan="5">No hay actividades</td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 <div class="clearfix"></div>

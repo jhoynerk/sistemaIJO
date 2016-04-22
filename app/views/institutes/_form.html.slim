@@ -1,3 +1,4 @@
+= custom_errors(@institute.errors)
 = form_for(@institute) do |f|
   p
     = f.label :code, 'Abrevitura'
@@ -7,7 +8,21 @@
     = f.text_field :name, required: true
   .actions
     = link_to 'Regresar', institutes_path, class: 'btn blue lighten-3 left'
-    = f.submit('Modificar', class: 'right btn blue')
+    = f.submit('Guardar', class: 'right btn blue')
   .clearfix
 
 
+javascript:
+  $(document).ready(function(){
+    $("#new_institute").validate({
+      rules: {
+        'institute[code]': {
+          required: true,
+          maxlenght: 4
+        },
+        'institute[name]': {
+          required: true
+        }
+      }
+    });
+  });

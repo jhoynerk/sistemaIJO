@@ -8,6 +8,7 @@
 
 
 u = User.create(username: 'prizni', email: 'prizni@gmail.com', password: 'password', password_confirmation: 'password');
+User.create(username: 'admin', email: 'admin@gmail.com', password: 'password', password_confirmation: 'password', admin: true);
 p u.username 
 institute = Institute.create(code: '001', name: 'Instituto Técnico Jesús Obrero');
 p institute.name

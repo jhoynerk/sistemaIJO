@@ -25,7 +25,7 @@
   .clearfix
   p
     = link_to 'Regresar', :back, class: 'btn blue lighten-3 left'
-    = f.submit('Agregar', class: 'right btn blue')
+    = f.submit('Guardar', class: 'right btn blue')
 .clearfix
 
 - unless @date.nil?
@@ -47,6 +47,29 @@ javascript:
       'timeFormat': 'h:i A',
       'minTime': '7:00am',
       'maxTime': '7:30pm'
+    });
+    $("#new_activity").validate({
+      rules: {
+        'activity[beneficiary_id]': {
+          required: true
+        },
+        'activity[area_id]': {
+          required: true
+        },
+        'activity[description]': {
+          required: true
+        },
+        'activity[day]': {
+          required: true
+        },
+        'activity[time_start]': {
+          required: true
+        },
+        'activity[time_end]': {
+          required: true
+        }
+
+      }
     });
   });
 

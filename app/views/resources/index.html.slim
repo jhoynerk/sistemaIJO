@@ -1,14 +1,16 @@
 h4
   | Listado de Recursos
-  = link_to "<i class='material-icons add'></i>".html_safe, new_resource_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
+  a.modal-trigger.btn-floating.btn-large.waves-effect.blue.waves-light.btn.right.separate href="#modal1" = fa_icon "print"
 
-table#datatable
+  = link_to "<i class='material-icons add'></i>".html_safe, new_resource_path, class: 'btn-floating btn-large waves-effect waves-light green accent-4 right'
+table.datatable.tables
   thead
     tr
       th Código
       th Nombre
       th Descripción
-      th Pertene al Recurso
+      th Área asociada
+      th N° de incidencias
       th
   tbody
     - @resources.each do |resource|
@@ -16,16 +18,36 @@ table#datatable
         td = resource.code
         td = resource.name
         td = resource.description
-        td = link_to  resource.resource.code.to_s+' '+resource.resource.name.to_s, resource.resource if resource.resource.present?
+        td = link_to resource.area.name, resource.area
+        td = resource.incidences.count
         td 
           = link_to "<i class='material-icons search'></i>".html_safe, resource , class: 'btn btn-floating blue'        
+          |    
           = link_to "<i class='material-icons create'></i>".html_safe, edit_resource_path(resource), class: 'btn btn-floating yellow accent-4'
+          |    
           = link_to "<i class='material-icons delete'></i>".html_safe, resource, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-floating red'
+
+#modal1.modal.modal-fixed-footer
+  .modal-content
+    h4 Listado de Recursos
+    table.datatable.tables#printer
+      thead
+        tr
+          th Código
+          th Nombre
+          th Descripción
+          th Pertene al Recurso
+      tbody
+        - @resources.each do |resource|
+          tr
+            td = resource.code
+            td = resource.name
+            td = resource.description
+            td = link_to  resource.resource.code.to_s+' '+resource.resource.name.to_s, resource.resource if resource.resource.present?
+  .modal-footer
+    a.modal-action.waves-effect.waves-green.btn-flat#print href="#!" Imprimir
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left href="#!" Cerrar
+
 
 - content_for :javascript
   = javascript_include_tag 'tables'
-
-javascript:
-  $(document).ready(function(){
-    $('select').addClass('browser-default');
-  });

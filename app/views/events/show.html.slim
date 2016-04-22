@@ -1,0 +1,35 @@
+h4 = @event.description
+p
+  strong Descripción:
+  = " #{@event.description}"
+p
+  strong Fecha inicio:
+  = " #{l(@event.activities.first.day, format: :long) }"
+p
+  strong Fecha final:
+  = " #{l(@event.activities.last.day, format: :long) }"
+p
+  strong Actividades:
+  = " #{@event.area.name}"
+- if @event.activities.any?
+  table
+    thead
+      tr
+        th Actividades
+        th Fecha
+        th Hora inicio
+        th Hora fin
+        th Estado
+    tbody
+      - @event.activities.each do |a|
+        tr class="#{class_tr(a.status)}"
+          td = link_to a.description, a
+          td = l(a.day, format: :long)
+          td = a.inicio
+          td = a.fin
+          td = a.status_humanize
+p
+  = link_to 'Regresar', events_path, class: 'btn blue lighten-3 left' 
+  = link_to 'Edición', edit_event_path(@event), class: 'right btn blue' 
+
+.clearfix

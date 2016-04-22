@@ -1,0 +1,24 @@
+h4 = @type_resource.name 
+
+p
+  strong Abreviatura:
+  = " #{@type_resource.code}"
+
+p
+  strong Tipo de recurso:
+  - if @type_resource.pedagogic
+    |  Pedagógico
+  - else
+    |  Tecnológico
+p
+  strong Movil o Fijo:
+  - if @type_resource.movil
+    |  Movil
+  - else
+    |  Fijo
+
+p
+  = link_to 'Regresar', type_resources_path, class: 'btn blue lighten-3 left' 
+  = link_to 'Edición', edit_type_resource_path(@type_resource), class: 'right btn blue' 
+
+.clearfix

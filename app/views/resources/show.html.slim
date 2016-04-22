@@ -1,44 +1,41 @@
-
-.row
-  h4 Ver Recurso
-  .col.m4
-    strong Código:
-  .col.m8
-    = @resource.code
-  .col.m12
-    hr
-  .col.m4
-    strong Nombre:
-  .col.m8
-    = @resource.name
-  .col.m12
-    hr
-  .col.m4
-    strong Descripción:
-  .col.m8
-    = @resource.description
-  .col.m12
-    hr
-  .col.m4
-    strong Pertenece al Recurso:
-  .col.m8
-    - if @resource.resource.present?
-      = link_to @resource.resource.code.to_s+' '+@resource.resource.name.to_s, @resource.resource
-    - else
-      | No pertenece a ningún recurso
-  .col.m12
-    hr
-  .col.m4
-    strong Recursos Asociados:
-  .col.m8
-    - if @resource.resources.any?
-      - @resource.resources.each do |r|
-        = link_to r.code.to_s+' '+r.name.to_s, r
-        br
-
-
+h4 = @resource.name 
+p
+  strong Abreviatura:
+  = " #{@resource.code}"
+p
+  strong Estado:
+  = " #{@resource.status_humanize }"
+p
+  strong Descriptión:
+  = " #{@resource.description}"
+p
+  strong Tipo de recurso:
+  - if @resource.pedagogic
+    |  Pedagógico
+  - else
+    |  Tecnológico
+p
+  strong Movil o Fijo:
+  - if @resource.movil
+    |  Movil
+  - else
+    |  Fijo
+p
+  strong Área al que pertenece:
+  = " #{@resource.area.name}"
 
 p
-  = link_to 'Regresar', resources_path, class: 'btn blue lighten-3 left'
-  = link_to 'Edición', edit_resource_path(@resource), class: 'right btn blue'
+  = link_to 'Regresar', resources_path, class: 'btn blue lighten-3 left' 
+  = link_to 'Edición', edit_resource_path(@resource), class: 'right btn blue' 
+br
+br
+h5 Incidencias(s) asociados
+table
+  thead
+    tr
+      th Observaciones
+  tbody
+    - @resource.incidences.each do |i|
+      tr
+        td = i.observations
 .clearfix

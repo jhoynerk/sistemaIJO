@@ -94,23 +94,24 @@
     <div class="collapsible-body" style="<%= open_collapse('prestamos') %>">
       <ul class="collection">
         <li class="collection-item <%= active_link('pink lighten-1 active', prestamos_path) %>">
-          <%= link_to 'Nuevo Prestamo', prestamos_path %>
+          <%= link_to 'Estados', prestamos_path %>
         </li>
       </ul>
     </div>
   </li>
-
-  <li class="<%= active_class('text') %>">
-    <a class="collapsible-header waves-effect waves-teal"><%=fa_icon "file-text-o"%><%=fa_icon "angle-down", class:'right teal lighten-2' %>Reportes</a>
-    <div class="collapsible-body" style="<%= open_collapse('text') %>">
-      <ul class="collection">
-        <li class="collection-item <%= active_link('teal lighten-2 active', new_area_path) %>">
-          <%= link_to 'Generar Reporte', new_area_path %>
-        </li>
-        <li class="collection-item <%= active_link('teal lighten-2 active', areas_path) %>">
-          <%= link_to 'Consultar Reporte', areas_path %>
-        </li>
-      </ul>
-    </div>
-  </li>
+  <% if current_user.admin? %>
+    <li class="<%= active_class('users') %>">
+      <a class="collapsible-header waves-effect waves-teal"><%=fa_icon "user"%><%=fa_icon "angle-down", class:'right teal lighten-2' %>Usuarios</a>
+      <div class="collapsible-body" style="<%= open_collapse('users') %>">
+        <ul class="collection">
+          <li class="collection-item <%= active_link('teal lighten-2 active', new_user_path) %>">
+            <%= link_to 'Nuevo usuario', new_user_path %>
+          </li>
+          <li class="collection-item <%= active_link('teal lighten-2 active', users_path) %>">
+            <%= link_to 'Listado de usuarios', users_path %>
+          </li>
+        </ul>
+      </div>
+    </li>
+  <% end %> 
 </ul>
