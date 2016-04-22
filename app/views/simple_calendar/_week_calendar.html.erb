@@ -2,7 +2,7 @@
   <%= link_to "<i class='material-icons keyboard_arrow_left'></i>".html_safe, url_for(params.merge(start_date: date_range.first - 1.day)), class: 'btn-floating blue darken-1 left' %>
   <%= I18n.t("date.month_names")[start_date.month] %> <%= start_date.year %>
   <%= link_to "<i class='material-icons keyboard_arrow_right'></i>".html_safe, url_for(params.merge(start_date: date_range.last + 1.day)), class: 'btn-floating blue darken-1 right'  %>
-  <table class="table table-striped">
+  <table class="table">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>

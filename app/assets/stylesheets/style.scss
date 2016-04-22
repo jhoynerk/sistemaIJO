@@ -90,3 +90,12 @@ nav a.button-collapse{
 .input-field .prefix ~ input,{
   margin-left: 3rem;
 }
+
+.simple-calendar .day {
+  width: 90px!important;
+}
+
+.collapsible-body p {
+    margin: 0;
+    padding: 0.5rem;
+}
